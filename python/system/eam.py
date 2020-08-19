@@ -15,7 +15,7 @@ __all__ = [
 
 import system.date
 from java.lang import Object
-from java.util import Locale
+from java.util import Date, Locale
 from system.dataset import Dataset
 
 
@@ -37,7 +37,7 @@ class UIResponse(Object):
         pass
 
     def getLocale(self):
-        pass
+        return self.locale
 
     def getWarns(self):
         pass
@@ -72,9 +72,9 @@ def queryAgentHistory(groupIds=None, agentIds=None,
             to. If not specified, all groups will be included.
         agentIds (list[str]): A list of agent names to restrict the
             results to. If not specified, all agents will be allowed.
-        startDate (datetime): The starting time for history events. If
+        startDate (Date): The starting time for history events. If
             null, defaults to 8 hours previous to now.
-        endDate (datetime): The ending time for the query range. If null,
+        endDate (Date): The ending time for the query range. If null,
             defaults to "now".
         limit (int): The limit of results to return. Defaults to 100.
             A value of 0 means "no limit".

@@ -16,6 +16,9 @@ __all__ = [
     'writeFile'
 ]
 
+from java.io import File
+from java.nio.file import Files
+
 
 def fileExists(filepath):
     """Checks to see if a file or folder at a given path exists.
@@ -26,8 +29,8 @@ def fileExists(filepath):
     Returns:
         bool: True (1) if the file/folder exists, false (0) otherwise.
     """
-    import os.path
-    return os.path.isfile(filepath)
+    f = File(filepath)
+    return f.exists()
 
 
 def getTempFile(extension):
@@ -105,8 +108,7 @@ def readFileAsBytes(filepath):
     Returns:
         bytearray: The contents of the file as an array of bytes.
     """
-    with open(filepath, 'rb') as f:
-        return f.read()
+    return Files.readAllBytes(filepath)
 
 
 def readFileAsString(filepath, encoding='utf-8'):
@@ -126,9 +128,7 @@ def readFileAsString(filepath, encoding='utf-8'):
     Returns:
         str: The contents of the file as a string.
     """
-    import io
-    with io.open(filepath, 'r', encoding=encoding) as f:
-        return f.read()
+    return Files.readString(filepath)
 
 
 def saveFile(filename, extension=False, typeDesc=None):

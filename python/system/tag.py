@@ -40,6 +40,7 @@ import warnings
 
 import system.date
 from java.lang import Object
+from java.util import Date
 
 
 class BrowseResults(Object):

@@ -23,6 +23,7 @@ from abc import ABCMeta, abstractmethod
 
 import system.date
 from java.lang import Object
+from java.util import Date
 
 
 class AlarmQueryResults(ABCMeta):
