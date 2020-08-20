@@ -52,7 +52,7 @@ __all__ = [
 ]
 
 from java.text import SimpleDateFormat
-from java.time import Instant, Period, ZoneId
+from java.time import ZoneId
 from java.util import Calendar, Date, GregorianCalendar, Locale, TimeZone
 from java.util.concurrent import TimeUnit
 
@@ -74,25 +74,6 @@ def _add(date, field, amount):
     cal.setTime(date)
     cal.add(field, amount)
     return cal.getTime()
-
-
-def _between(start, end):
-    """Calculates the number of years, months, and days between two
-    dates.
-
-    Args:
-        start: The start date.
-        end: The end date.
-
-    Returns:
-        Period: A Period object consisting of the number of years,
-            months, and days between two dates.
-    """
-    date_1 = Instant.ofEpochMilli(start.getTime()).atZone(
-        ZoneId.systemDefault()).toLocalDate()
-    date_2 = Instant.ofEpochMilli(end.getTime()).atZone(
-        ZoneId.systemDefault()).toLocalDate()
-    return Period.between(date_1, date_2)
 
 
 def addDays(date, value):
@@ -284,7 +265,7 @@ def getAMorPM(date):
     """
     cal = Calendar.getInstance()
     cal.setTime(date)
-    return 1 if cal.get(Calendar.HOUR_OF_DAY) > 12 else 0
+    return 1 if cal.get(Calendar.HOUR_OF_DAY) >= 12 else 0
 
 
 def getDate(year, month, day):
