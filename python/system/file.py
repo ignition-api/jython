@@ -111,7 +111,7 @@ def readFileAsBytes(filepath):
     return Files.readAllBytes(filepath)
 
 
-def readFileAsString(filepath, encoding='utf-8'):
+def readFileAsString(filepath, encoding='UTF-8'):
     """Opens the file found at path filename, and reads the entire
     file. Returns the file as a string. Common things to do with this
     string would be to load it into the text property of a component,
@@ -128,7 +128,9 @@ def readFileAsString(filepath, encoding='utf-8'):
     Returns:
         str: The contents of the file as a string.
     """
-    return Files.readString(filepath)
+    from java.nio.charset import Charset
+    charset = Charset.forName(encoding)
+    return Files.readString(filepath, charset)
 
 
 def saveFile(filename, extension=False, typeDesc=None):
@@ -153,7 +155,7 @@ def saveFile(filename, extension=False, typeDesc=None):
     return None
 
 
-def writeFile(filepath, data, append=False, encoding='utf-8'):
+def writeFile(filepath, data, append=False, encoding='UTF-8'):
     """Writes the given data to the file at file path filename. If the
     file exists, the append argument determines whether or not it is
     overwritten (the default) or appended to. The data argument can be

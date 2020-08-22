@@ -43,13 +43,14 @@ class FPMIWindow(JInternalFrame):
     SHOW_NEVER = 1
     SHOW_MAXIMIZED = 2
 
+    _path = 'Path/To/Window'
+    _root_container = 'Root Container'
+
     def __init__(self, name):
-        super(FPMIWindow, self).__init__()
         self.name = name
 
     def getPath(self):
-        print self
-        return 'Path/To/Window'
+        return self._path
 
     def getRootContainer(self):
         print self
@@ -172,7 +173,7 @@ def getCurrentWindow():
     defined as the maximized window. With the Typical Navigation
     Strategy, there is only ever one maximized window at a time.
 
-    Eeturns:
+    Returns:
         str: The path of the current "main screen" window - the
             maximized window.
     """
