@@ -6,7 +6,7 @@
 """SECS/GEM Functions
 The following functions allow you to interact with equipment defined
 by the SECS/GEM module. Note that the SECS/GEM module must be
-installed before these functions will be accessible. """
+installed before these functions will be accessible."""
 
 __all__ = [
     'copyEquipment',

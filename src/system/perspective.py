@@ -4,7 +4,7 @@
 
 """Perspective Functions
 The following functions offer various ways to interact with a
-Perspective session from a Python script. """
+Perspective session from a Python script."""
 
 from __future__ import print_function
 
