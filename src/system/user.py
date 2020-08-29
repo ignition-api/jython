@@ -593,7 +593,7 @@ def getSchedule(scheduleName):
     return None
 
 
-def getScheduledUsers(userSource, date=None):
+def getScheduledUsers(userSource, date=Date()):
     """Returns a list of users that are scheduled on. If no users are
     scheduled, it will return an empty list.
 

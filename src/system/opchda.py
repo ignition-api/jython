@@ -275,9 +275,8 @@ def readProcessed(serverName, itemIds, startDate, endDate, resampleIntervalMS,
     return [ReadResult()]
 
 
-def readRaw(serverName, itemIds, startDate, endDate, maxValues,
-            boundingValues):
-    """
+def readRaw(serverName, itemIds, startDate, endDate, maxValues, boundingValues):
+    """Reads raw values from the OPC-HDA server.
 
     Args:
         serverName (str): The name of the defined OPC-HDA server to
