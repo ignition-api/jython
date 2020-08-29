@@ -243,10 +243,10 @@ def readAttributes(serverName, itemId, attributeIds, startDate, endDate):
 
 def readProcessed(serverName, itemIds, startDate, endDate, resampleIntervalMS,
                   aggregates):
-    """Reads processed values from the OPC-HDA server. Processed values are
-    calculated values, based on the aggregate function requested for each
-    item. The list of aggregates can be obtained by calling
-    system.opchda.getAggregates().
+    """Reads processed values from the OPC-HDA server. Processed
+    values are calculated values, based on the aggregate function
+    requested for each item. The list of aggregates can be obtained by
+    calling system.opchda.getAggregates().
 
     Args:
         serverName (str): The name of the defined OPC-HDA server to
@@ -315,6 +315,7 @@ def replace(serverName, itemId, value, date, quality):
         quality (int): The quality to replace.
 
     Returns:
-        int: The items quality resulting from the operation.
+        int: The item's quality resulting from the operation.
     """
     print(serverName, itemId, value, date, quality)
+    return 192

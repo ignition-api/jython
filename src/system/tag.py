@@ -143,9 +143,13 @@ class QualifiedValue(object):
                  value=None,
                  quality=None,
                  timestamp=None):
-        self.value = value
-        self.quality = quality
-        self.timestamp = timestamp
+        self._value = value
+        self._quality = quality
+        self._timestamp = timestamp
+
+    @property
+    def value(self):
+        return str(self._value)
 
     def derive(self, diagnosticMessage):
         pass
@@ -644,9 +648,8 @@ def queryTagCalculations(paths, calculations,
         startDate (Date): The starting point for the calculation
             window. If omitted, and range is not used, 8 hours before
             the current time is used. Optional.
-        endDate (Date): The end of the calculation window. If
-            omitted, and range is not used, uses the current time.
-            Optional.
+        endDate (Date): The end of the calculation window. If omitted,
+            and range is not used, uses the current time. Optional.
         rangeHours (int): Allows you to specify the query range in
             hours, instead of using start and end date. Can be
             positive or negative, and can be used in conjunction with
@@ -731,8 +734,8 @@ def queryTagHistory(paths,
         paths (list[str]): An array of tag paths (strings) to query.
             Each tag path specified will be a column in the result
             dataset.
-        startDate (Date): The earliest value to retrieve. If
-            omitted, 8 hours before current time is used. Optional.
+        startDate (Date): The earliest value to retrieve. If omitted,
+            8 hours before current time is used. Optional.
         endDate (Date): The latest value to retrieve. If omitted,
             current time is used. Optional.
         returnSize (int): The number of samples to return. -1 will
@@ -749,10 +752,10 @@ def queryTagHistory(paths,
         returnFormat (str): Use "Wide" to have a column per tag
             queried, or "Tall" to have a fixed-column format. Default
             is "Wide". Optional.
-        columnNames (list[str]): Aliases that will be used to override the
-            column names in the result dataset. Must be 1-to-1 with
-            the tag paths. If not specified, the tag paths themselves
-            will be used as column titles. Optional.
+        columnNames (list[str]): Aliases that will be used to override
+            the column names in the result dataset. Must be 1-to-1
+            with the tag paths. If not specified, the tag paths
+            themselves will be used as column titles. Optional.
         intervalHours (int): Allows you to specify the window interval
             in terms of hours, as opposed to using a specific return
             size. Optional.
@@ -763,14 +766,16 @@ def queryTagHistory(paths,
             hours, instead of using start and end date. Can be
             positive or negative, and can be used in conjunction with
             startDate or endDate. Optional.
-        rangeMinutes (int): Same as rangeHours, but in minutes. Optional.
+        rangeMinutes (int): Same as rangeHours, but in minutes.
+            Optional.
         aggregationModes (list[str]): A one-to-one list with paths
             specifying an aggregation mode per column. Optional.
         includeBoundingValues (bool): A boolean flag indicating that
             the system should attempt to include values for the query
             bound times if possible. The default for this property
             depends on the query mode, so unless a specific behavior
-            is desired, it is best to not include this parameter. Optional.
+            is desired, it is best to not include this parameter.
+            Optional.
         validateSCExec (bool): A boolean flag indicating whether or
             not data should be validated against the scan class
             execution records. If false, data will appear flat (but

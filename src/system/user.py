@@ -226,8 +226,8 @@ class PyUser(User):
             end (Date): Date to end start the schedule adjustment. Not
                 null.
             available (bool): True if the employee is available during
-                this period.
-            note (str): May be null or empty.
+                this period. Optional.
+            note (str): May be null or empty. Optional.
         """
         print(cls, start, end, available, note)
 

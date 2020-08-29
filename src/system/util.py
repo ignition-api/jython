@@ -546,8 +546,10 @@ def getSessionInfo(usernameFilter=None, projectFilter=None):
     username or the username and the project returned.
 
     Args:
-        usernameFilter (str):
-        projectFilter (str):
+        usernameFilter (str): A regular-expression based filter string
+            to restrict the list by username. Optional.
+        projectFilter (str): A regular-expression based filter string
+            to restrict the list by project. Optional.
 
     Returns:
         PyDataSet: A dataset representing the Gateway's current
@@ -719,21 +721,22 @@ def queryAuditLog(auditProfileName,
             the history from.
         startDate (Date): The earliest audit event to return. If
             omitted, the current time - 8 hours will be used.
+            Optional.
         endDate (Date): The latest audit event to return. If omitted,
-            the current time will be used.
+            the current time will be used. Optional.
         actorFilter (str): A filter string used to restrict the
-            results by actor.
+            results by actor. Optional.
         actionFilter (str): A filter string used to restrict the
-            results by action.
+            results by action. Optional.
         targetFilter (str): A filter string used to restrict the
-            results by target.
+            results by target. Optional.
         valueFilter (str): A filter string used to restrict the
-            results by value.
+            results by value. Optional.
         systemFilter (str): A filter string used to restrict the
-            results by system.
+            results by system. Optional.
         contextFilter (int): A bitmask used to restrict the results
             by context. 0x01 = Gateway, 0x02 = Designer,
-            0x04 = Client.
+            0x04 = Client. Optional.
 
     Returns:
         Dataset: A dataset with the audit events from the specified
@@ -856,11 +859,11 @@ def sendRequest(project, messageHandler, payload=None, hostName=None,
             access dictionary variables. Optional.
         hostName (str): Limits the message delivery to the client
             that has the specified network host name. Optional.
-        remoteServer (str): A string representing a target Gateway Server
-        name. The message will be delivered to the remote Gateway over
-            the Gateway Network. Upon delivery, the message is
-            distributed to the local Gateway and clients as per the
-            other parameters. Optional.
+        remoteServer (str): A string representing a target Gateway
+            Server name. The message will be delivered to the remote
+            Gateway over the Gateway Network. Upon delivery, the
+            message is distributed to the local Gateway and clients as
+            per the other parameters. Optional.
         timeoutSec (str): The number of seconds before the sendRequest
             call times out. Optional.
 

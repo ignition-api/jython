@@ -153,8 +153,8 @@ def getShelvedPaths():
 
     Returns:
         list[ShelvedPath]: A list of ShelvedPath objects. ShelvedPath
-        objects can be examined with getExpiration, getHitCount,
-        getPath, getShelveTime, getUser, and isExpired.
+            objects can be examined with getExpiration, getHitCount,
+            getPath, getShelveTime, getUser, and isExpired.
     """
     return [ShelvedPath()]
 
