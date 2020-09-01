@@ -512,7 +512,7 @@ def isAfter(date_1, date_2):
         date_2 (Date): The second date.
 
     Returns:
-        bool: True (1) if date_1 is after date_2, false (0) otherwise.
+        bool: True (1) if date_1 is after date_2, False (0) otherwise.
     """
     return date_1.after(date_2)
 
@@ -525,7 +525,7 @@ def isBefore(date_1, date_2):
         date_2 (Date): The second date.
 
     Returns:
-        bool: True (1) if date_1 is before date_2, false (0)
+        bool: True (1) if date_1 is before date_2, False (0)
             otherwise.
     """
     return date_1.before(date_2)
@@ -543,7 +543,7 @@ def isBetween(target_date, start_date, end_date):
 
     Returns:
         bool: True (1) if target_date is >= start_date and
-            target_date <= end_date, false (0) otherwise.
+            target_date <= end_date, False (0) otherwise.
     """
     a = target_date
     b = start_date
@@ -562,7 +562,7 @@ def isDaylightTime(date=Date()):
 
     Returns:
         bool: True (1) if date is observing Daylight Saving Time in
-            the current timezone, false (0) otherwise.
+            the current timezone, False (0) otherwise.
     """
     return TimeZone.getDefault().inDaylightTime(date)
 
