@@ -4,7 +4,8 @@
 
 """EAM Functions
 The following functions give you access to view EAM information from
-the Gateway."""
+the Gateway.
+"""
 
 __all__ = [
     'getGroups',
@@ -15,7 +16,7 @@ __all__ = [
 
 import system.date
 from java.lang import Object
-from java.util import Date, Locale
+from java.util import Locale
 from system.dataset import Dataset
 
 
@@ -37,7 +38,7 @@ class UIResponse(Object):
         pass
 
     def getLocale(self):
-        return self.locale
+        pass
 
     def getWarns(self):
         pass
@@ -69,23 +70,22 @@ def queryAgentHistory(groupIds=None, agentIds=None,
 
     Args:
         groupIds (list[str]): A list of groups to restrict the results
-            to. If not specified, all groups will be included.
-            Optional.
+            to. If not specified, all groups will be included. Optional.
         agentIds (list[str]): A list of agent names to restrict the
             results to. If not specified, all agents will be allowed.
             Optional.
-        startDate (Date): The starting time for history events. If
+        startDate (datetime): The starting time for history events. If
             null, defaults to 8 hours previous to now. Optional.
-        endDate (Date): The ending time for the query range. If null,
-            defaults to "now". Optional.
-        limit (int): The limit of results to return. Defaults to 100.
-            A value of 0 means "no limit". Optional.
+        endDate (datetime): The ending time for the query range. If
+            null, defaults to "now". Optional.
+        limit (int): The limit of results to return. Defaults to 100. A
+            value of 0 means "no limit". Optional.
 
     Returns:
         Dataset: A dataset with columns id, agent_name, agent_role,
             event_time, event_category, event_type, event_source,
-            event_level, event_level_int, and message, where each row
-            is a new agent event.
+            event_level, event_level_int, and message, where each row is
+            a new agent event.
     """
     print(groupIds, agentIds, startDate, endDate, limit)
     return Dataset()
@@ -97,21 +97,18 @@ def queryAgentStatus(groupIds=None, agentIds=None, isConnected=True):
     Args:
         groupIds (list[str]): A list of groups to restrict the results
             to. If not specified, all groups will be included.
-            Optional.
         agentIds (list[str]): A list of agent names to restrict the
             results to. If not specified, all agents will be allowed.
-            Optional.
         isConnected (bool): If True, only returns agents that are
             currently connected. If False, only agents that are
-            considered down will be returned, and if not specified,
-            all agents will be returned.
-            Optional.
+            considered down will be returned, and if not specified, all
+            agents will be returned.
 
     Returns:
-        Dataset: A dataset with columns AgentName, NodeRole,
-            AgentGroup, LastCommunication, IsConnected, IsRunning,
-            RunningState, RunningStateInt, LicenseKey, and Version,
-            where each row is a new agent.
+        Dataset: A dataset with columns AgentName, NodeRole, AgentGroup,
+            LastCommunication, IsConnected, IsRunning, RunningState,
+            RunningStateInt, LicenseKey, and Version, where each row is
+            a new agent.
     """
     print(groupIds, agentIds, isConnected)
     return Dataset()
