@@ -38,7 +38,7 @@ class UIResponse(Object):
         pass
 
     def getLocale(self):
-        pass
+        return self.locale
 
     def getWarns(self):
         pass

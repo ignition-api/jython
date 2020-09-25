@@ -3,8 +3,7 @@
 # Contact: thecesrom@gmail.com
 
 """File Functions
-The following functions give you access to read and write to files.
-"""
+The following functions give you access to read and write to files."""
 
 __all__ = [
     'fileExists',
@@ -17,6 +16,9 @@ __all__ = [
     'writeFile'
 ]
 
+from java.io import File
+from java.nio.file import Files
+
 
 def fileExists(filepath):
     """Checks to see if a file or folder at a given path exists.
@@ -25,20 +27,20 @@ def fileExists(filepath):
         filepath (str): The path of the file or folder to check.
 
     Returns:
-        bool: True (1) if the file/folder exists, False (0) otherwise.
+        bool: True (1) if the file/folder exists, false (0) otherwise.
     """
-    import os.path
-    return os.path.isfile(filepath)
+    f = File(filepath)
+    return f.exists()
 
 
 def getTempFile(extension):
     """Creates a new temp file on the host machine with a certain
-    extension, returning the path to the file. The file is marked to be
-    removed when the Java VM exits.
+    extension, returning the path to the file. The file is marked to
+    be removed when the Java VM exits.
 
     Args:
-        extension (str): An extension, like ".txt", to append to the end
-            of the temporary file.
+        extension (str): An extension, like ".txt", to append to the
+            end of the temporary file.
 
     Returns:
         str: The path to the newly created temp file.
@@ -83,7 +85,8 @@ def openFiles(extension=None, defaultLocation=None):
             Optional.
 
     Returns:
-        list[str]: The paths to the selected files, or None if canceled.
+        list[str]: The paths to the selected files, or None if
+            canceled.
     """
     print(extension, defaultLocation)
     return None
@@ -105,8 +108,7 @@ def readFileAsBytes(filepath):
     Returns:
         bytearray: The contents of the file as an array of bytes.
     """
-    with open(filepath, 'rb') as f:
-        return f.read()
+    return Files.readAllBytes(filepath)
 
 
 def readFileAsString(filepath, encoding='UTF-8'):
@@ -126,9 +128,9 @@ def readFileAsString(filepath, encoding='UTF-8'):
     Returns:
         str: The contents of the file as a string.
     """
-    import io
-    with io.open(filepath, 'r', encoding=encoding) as f:
-        return f.read()
+    from java.nio.charset import Charset
+    charset = Charset.forName(encoding)
+    return Files.readString(filepath, charset)
 
 
 def saveFile(filename, extension=False, typeDesc=None):
