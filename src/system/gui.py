@@ -45,7 +45,8 @@ __all__ = [
 from java.awt import Color
 from java.lang import Object
 from java.util import EventObject
-from javax.swing import JComponent, JFrame, JInternalFrame, JPopupMenu
+from javax.swing import (JComponent, JFrame, JInternalFrame, JLabel,
+                         JOptionPane, JPanel, JPopupMenu, JTextField)
 
 # Constants
 ACCL_NONE = 0
@@ -140,7 +141,7 @@ def color(*args):
     print args
 
 
-def confirm(message, title=None, allowCancel=False):
+def confirm(message, title='Confirm', allowCancel=False):
     """Displays a confirmation dialog box to the user with "Yes", "No"
     and "Cancel" options, and a custom message.
 
@@ -154,8 +155,30 @@ def confirm(message, title=None, allowCancel=False):
         bool: True (1) if the user selected "Yes", False (0) if the user
             selected "No", None if the user selected "Cancel".
     """
-    print(message, title, allowCancel)
-    return True
+    options = [
+        'Yes',
+        'No'
+    ]
+
+    if allowCancel:
+        options.append('Cancel')
+
+    choice = JOptionPane.showOptionDialog(
+        None,
+        message,
+        title,
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        None,
+        options,
+        options[0]
+    )
+
+    return (
+        not bool(choice)
+        if choice in [JOptionPane.YES_OPTION, JOptionPane.NO_OPTION]
+        else None
+    )
 
 
 def convertPointToScreen(x, y, event):
@@ -226,14 +249,19 @@ def desktop(handle='primary'):
     return WindowUtilities()
 
 
-def errorBox(message, title=None):
+def errorBox(message, title='Error'):
     """Displays an error-style message box to the user.
 
     Args:
         message (str): The message to display in an error box.
         title (str): The title for the error box. Optional.
     """
-    _dummy(message, title)
+    JOptionPane.showMessageDialog(
+        None,
+        message,
+        title,
+        JOptionPane.ERROR_MESSAGE
+    )
 
 
 def findWindow(path):
@@ -402,7 +430,7 @@ def getWindowNames():
     return 'Main Window', 'Main Window 1', 'Main Window 2'
 
 
-def inputBox(message, defaultText):
+def inputBox(message, defaultText=None):
     """Opens up a popup input dialog box. This dialog box will show a
     prompt message, and allow the user to type in a string. When the
     user is done, they can press "OK" or "Cancel". If OK is pressed,
@@ -418,8 +446,32 @@ def inputBox(message, defaultText):
     Returns:
         str: The string value that was entered in the input box.
     """
-    print(message, defaultText)
-    return None
+    options = [
+        'OK',
+        'Cancel'
+    ]
+
+    panel = JPanel()
+    label = JLabel('{}: '.format(message))
+    panel.add(label)
+    text_field = JTextField(25)
+    text_field.setText(defaultText)
+    panel.add(text_field)
+
+    choice = JOptionPane.showOptionDialog(
+        None,
+        panel,
+        'Input',
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        None,
+        options,
+        options[0]
+    )
+
+    return (text_field.getText()
+            if choice == JOptionPane.OK_OPTION
+            else None)
 
 
 def isTouchscreenModeEnabled():
@@ -433,7 +485,7 @@ def isTouchscreenModeEnabled():
     return False
 
 
-def messageBox(message, title=None):
+def messageBox(message, title='Information'):
     """Displays an informational-style message popup box to the user.
 
     Args:
@@ -441,7 +493,12 @@ def messageBox(message, title=None):
             formatting.
         title (str): The title for the message box. Optional.
     """
-    _dummy(message, title)
+    JOptionPane.showMessageDialog(
+        None,
+        message,
+        title,
+        JOptionPane.INFORMATION_MESSAGE
+    )
 
 
 def openDesktop(screen=0, handle=None, title=None, width=None, height=None,
@@ -613,7 +670,7 @@ def transform(component, newX=None, newY=None, newWidth=None, newHeight=None,
     return None
 
 
-def warningBox(message, title=None):
+def warningBox(message, title='Warning'):
     """Displays a message to the user in a warning style pop-up dialog.
 
     Args:
@@ -621,4 +678,9 @@ def warningBox(message, title=None):
             accept html formatting.
         title (str): The title for the warning box. Optional.
     """
-    _dummy(message, title)
+    JOptionPane.showMessageDialog(
+        None,
+        message,
+        title,
+        JOptionPane.WARNING_MESSAGE
+    )

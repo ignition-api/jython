@@ -11,7 +11,7 @@ Ignition is a set of packages and modules that allows developers to get code com
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-* Java 8 or 11
+* Java 11
 * Jython 2.7.1 ([download here](https://www.jython.org/download.html))
 * You are familiar with [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions)
 

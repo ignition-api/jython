@@ -129,8 +129,9 @@ def readFileAsString(filepath, encoding='UTF-8'):
         str: The contents of the file as a string.
     """
     from java.nio.charset import Charset
+    from java.nio.file import Paths
     charset = Charset.forName(encoding)
-    return Files.readString(filepath, charset)
+    return Files.readString(Paths.get(filepath), charset)
 
 
 def saveFile(filename, extension=False, typeDesc=None):
