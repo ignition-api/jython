@@ -1,10 +1,10 @@
-# Ignition
-
 <!--- Badges --->
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)
 ![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/Ignition/jython)
 ![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)
 ![GitHub downloads](https://img.shields.io/github/downloads/thecesrom/Ignition/total)
+
+# Ignition
 
 Ignition is a set of packages and modules that allows developers to get code completion in their IDE of choice.
 
@@ -12,7 +12,7 @@ Ignition is a set of packages and modules that allows developers to get code com
 
 Before you begin, ensure you have met the following requirements:
 * Java 11
-* Jython 2.7.1 ([download here](https://www.jython.org/download.html))
+* Jython 2.7.1 ([download here](https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar))
 * You are familiar with [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions)
 
 ## Using Ignition
