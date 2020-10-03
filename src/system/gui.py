@@ -1,45 +1,20 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """GUI Functions
 The following functions allow you to control windows and create popup
 interfaces.
 """
 
 __all__ = [
-    'chooseColor',
-    'closeDesktop',
-    'color',
-    'confirm',
-    'convertPointToScreen',
-    'createPopupMenu',
-    'desktop',
-    'errorBox',
-    'findWindow',
-    'getCurrentDesktop',
-    'getDesktopHandles',
-    'getOpenedWindowNames',
-    'getOpenedWindows',
-    'getParentWindow',
-    'getQuality',
-    'getScreenIndex',
-    'getScreens',
-    'getSibling',
-    'getWindow',
-    'getWindowNames',
-    'inputBox',
-    'isTouchscreenModeEnabled',
-    'messageBox',
-    'openDesktop',
-    'openDiagnostics',
-    'passwordBox',
-    'setScreenIndex',
-    'setTouchscreenModeEnabled',
-    'showNumericKeypad',
-    'showTouchscreenKeyboard',
-    'transform',
-    'warningBox'
+    'chooseColor', 'closeDesktop', 'color', 'confirm', 'convertPointToScreen',
+    'createPopupMenu', 'desktop', 'errorBox', 'findWindow',
+    'getCurrentDesktop', 'getDesktopHandles', 'getOpenedWindowNames',
+    'getOpenedWindows', 'getParentWindow', 'getQuality', 'getScreenIndex',
+    'getScreens', 'getSibling', 'getWindow', 'getWindowNames', 'inputBox',
+    'isTouchscreenModeEnabled', 'messageBox', 'openDesktop', 'openDiagnostics',
+    'passwordBox', 'setScreenIndex', 'setTouchscreenModeEnabled',
+    'showNumericKeypad', 'showTouchscreenKeyboard', 'transform', 'warningBox'
 ]
 
 from java.awt import Color
@@ -155,30 +130,18 @@ def confirm(message, title='Confirm', allowCancel=False):
         bool: True (1) if the user selected "Yes", False (0) if the user
             selected "No", None if the user selected "Cancel".
     """
-    options = [
-        'Yes',
-        'No'
-    ]
+    options = ['Yes', 'No']
 
     if allowCancel:
         options.append('Cancel')
 
-    choice = JOptionPane.showOptionDialog(
-        None,
-        message,
-        title,
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        None,
-        options,
-        options[0]
-    )
+    choice = JOptionPane.showOptionDialog(None, message, title,
+                                          JOptionPane.YES_NO_CANCEL_OPTION,
+                                          JOptionPane.QUESTION_MESSAGE, None,
+                                          options, options[0])
 
-    return (
-        not bool(choice)
-        if choice in [JOptionPane.YES_OPTION, JOptionPane.NO_OPTION]
-        else None
-    )
+    return (not bool(choice) if choice
+            in [JOptionPane.YES_OPTION, JOptionPane.NO_OPTION] else None)
 
 
 def convertPointToScreen(x, y, event):
@@ -256,12 +219,8 @@ def errorBox(message, title='Error'):
         message (str): The message to display in an error box.
         title (str): The title for the error box. Optional.
     """
-    JOptionPane.showMessageDialog(
-        None,
-        message,
-        title,
-        JOptionPane.ERROR_MESSAGE
-    )
+    JOptionPane.showMessageDialog(None, message, title,
+                                  JOptionPane.ERROR_MESSAGE)
 
 
 def findWindow(path):
@@ -446,10 +405,7 @@ def inputBox(message, defaultText=None):
     Returns:
         str: The string value that was entered in the input box.
     """
-    options = [
-        'OK',
-        'Cancel'
-    ]
+    options = ['OK', 'Cancel']
 
     panel = JPanel()
     label = JLabel('{}: '.format(message))
@@ -458,20 +414,12 @@ def inputBox(message, defaultText=None):
     text_field.setText(defaultText)
     panel.add(text_field)
 
-    choice = JOptionPane.showOptionDialog(
-        None,
-        panel,
-        'Input',
-        JOptionPane.OK_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        None,
-        options,
-        options[0]
-    )
+    choice = JOptionPane.showOptionDialog(None, panel, 'Input',
+                                          JOptionPane.OK_CANCEL_OPTION,
+                                          JOptionPane.QUESTION_MESSAGE, None,
+                                          options, options[0])
 
-    return (text_field.getText()
-            if choice == JOptionPane.OK_OPTION
-            else None)
+    return (text_field.getText() if choice == JOptionPane.OK_OPTION else None)
 
 
 def isTouchscreenModeEnabled():
@@ -493,16 +441,18 @@ def messageBox(message, title='Information'):
             formatting.
         title (str): The title for the message box. Optional.
     """
-    JOptionPane.showMessageDialog(
-        None,
-        message,
-        title,
-        JOptionPane.INFORMATION_MESSAGE
-    )
+    JOptionPane.showMessageDialog(None, message, title,
+                                  JOptionPane.INFORMATION_MESSAGE)
 
 
-def openDesktop(screen=0, handle=None, title=None, width=None, height=None,
-                x=0, y=0, windows=None):
+def openDesktop(screen=0,
+                handle=None,
+                title=None,
+                width=None,
+                height=None,
+                x=0,
+                y=0,
+                windows=None):
     """Creates an additional Desktop in a new frame. For more details,
     see the Multi-Monitor Clients page.
 
@@ -605,7 +555,8 @@ def showNumericKeypad(initialValue=None, fontSize=None, usePasswordMode=False):
     return 43
 
 
-def showTouchscreenKeyboard(initialText=None, fontSize=None,
+def showTouchscreenKeyboard(initialText=None,
+                            fontSize=None,
                             passwordMode=False):
     """Displays a modal on-screen keyboard, allowing for arbitrary text
     entry using the mouse, or a finger on a touchscreen monitor. Returns
@@ -625,9 +576,16 @@ def showTouchscreenKeyboard(initialText=None, fontSize=None,
     return ''
 
 
-def transform(component, newX=None, newY=None, newWidth=None, newHeight=None,
-              duration=0, callback=None, framesPerSecond=60,
-              acceleration=None, coordSpace=None):
+def transform(component,
+              newX=None,
+              newY=None,
+              newWidth=None,
+              newHeight=None,
+              duration=0,
+              callback=None,
+              framesPerSecond=60,
+              acceleration=None,
+              coordSpace=None):
     """Sets a component's position and size at runtime.  Additional
     arguments for the duration, framesPerSecond, and acceleration of the
     operation exist for animation.  An optional callback argument will
@@ -678,9 +636,5 @@ def warningBox(message, title='Warning'):
             accept html formatting.
         title (str): The title for the warning box. Optional.
     """
-    JOptionPane.showMessageDialog(
-        None,
-        message,
-        title,
-        JOptionPane.WARNING_MESSAGE
-    )
+    JOptionPane.showMessageDialog(None, message, title,
+                                  JOptionPane.WARNING_MESSAGE)
