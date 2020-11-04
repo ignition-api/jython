@@ -245,18 +245,21 @@ def beep():
     platforms = {
         'linux1': 'Linux',
         'linux2': 'Linux',
-        'darwin': 'OS X',
+        'darwin': 'macOS',
         'win32': 'Windows',
     }
 
-    if sys.platform in platforms:
+    if 'java' in sys.platform:
+        from java.awt import Toolkit
+        Toolkit.getDefaultToolkit().beep()
+    elif sys.platform in platforms:
         if platforms[sys.platform] == 'Windows':
             try:
                 import winsound
                 winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
             except ImportError:
                 print 'Beep!'
-        elif platforms[sys.platform] == 'OS X':
+        elif platforms[sys.platform] == 'macOS':
             import os
             os.system('say "beep"')
         elif platforms[sys.platform] == 'Linux':
