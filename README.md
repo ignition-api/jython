@@ -1,6 +1,6 @@
 <!--- Badges --->
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)
-![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/Ignition/jython)
+![GitHub last commit (jython)](https://img.shields.io/github/last-commit/thecesrom/Ignition/jython)
 ![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)
 
 # Ignition
@@ -12,7 +12,7 @@ Ignition is a set of packages and modules that allows developers to get code com
 Before you begin, ensure you have met the following requirements:
 * Java 11.0.7 ([found here](https://www.azul.com/downloads/zulu-community/?version=java-11-lts&architecture=x86-64-bit&package=jdk&show-old-builds=true))
 * Jython 2.7.1 ([download here](https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar))
-* You are familiar with [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
+* You are familiar with [Ignition 8.1 Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
 
 ## Using Ignition
 
