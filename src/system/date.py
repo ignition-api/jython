@@ -6,15 +6,49 @@ The following functions give you access to test and modify dates.
 """
 
 __all__ = [
-    'addDays', 'addHours', 'addMillis', 'addMinutes', 'addMonths',
-    'addSeconds', 'addWeeks', 'addYears', 'daysBetween', 'format',
-    'fromMillis', 'getAMorPM', 'getDate', 'getDayOfMonth', 'getDayOfWeek',
-    'getDayOfYear', 'getHour12', 'getHour24', 'getMillis', 'getMinute',
-    'getMonth', 'getQuarter', 'getSecond', 'getTimezone', 'getTimezoneOffset',
-    'getTimezoneRawOffset', 'getYear', 'hoursBetween', 'isAfter', 'isBefore',
-    'isBetween', 'isDaylightTime', 'midnight', 'millisBetween',
-    'minutesBetween', 'monthsBetween', 'now', 'parse', 'secondsBetween',
-    'setTime', 'toMillis', 'weeksBetween', 'yearsBetween'
+    "addDays",
+    "addHours",
+    "addMillis",
+    "addMinutes",
+    "addMonths",
+    "addSeconds",
+    "addWeeks",
+    "addYears",
+    "daysBetween",
+    "format",
+    "fromMillis",
+    "getAMorPM",
+    "getDate",
+    "getDayOfMonth",
+    "getDayOfWeek",
+    "getDayOfYear",
+    "getHour12",
+    "getHour24",
+    "getMillis",
+    "getMinute",
+    "getMonth",
+    "getQuarter",
+    "getSecond",
+    "getTimezone",
+    "getTimezoneOffset",
+    "getTimezoneRawOffset",
+    "getYear",
+    "hoursBetween",
+    "isAfter",
+    "isBefore",
+    "isBetween",
+    "isDaylightTime",
+    "midnight",
+    "millisBetween",
+    "minutesBetween",
+    "monthsBetween",
+    "now",
+    "parse",
+    "secondsBetween",
+    "setTime",
+    "toMillis",
+    "weeksBetween",
+    "yearsBetween",
 ]
 
 from java.text import SimpleDateFormat
@@ -181,11 +215,13 @@ def daysBetween(date_1, date_2):
             two dates.
     """
     return int(
-        TimeUnit.DAYS.convert(date_2.getTime() - date_1.getTime(),
-                              TimeUnit.MILLISECONDS))
+        TimeUnit.DAYS.convert(
+            date_2.getTime() - date_1.getTime(), TimeUnit.MILLISECONDS
+        )
+    )
 
 
-def format(date, format='yyyy-MM-dd HH:mm:ss'):
+def format(date, format="yyyy-MM-dd HH:mm:ss"):
     """Returns the given date as a string, formatted according to a
     pattern.
 
@@ -307,9 +343,11 @@ def getHour12(date):
     """
     cal = Calendar.getInstance()
     cal.setTime(date)
-    return (cal.get(Calendar.HOUR_OF_DAY) -
-            12 if cal.get(Calendar.HOUR_OF_DAY) > 12 else cal.get(
-                Calendar.HOUR_OF_DAY))
+    return (
+        cal.get(Calendar.HOUR_OF_DAY) - 12
+        if cal.get(Calendar.HOUR_OF_DAY) > 12
+        else cal.get(Calendar.HOUR_OF_DAY)
+    )
 
 
 def getHour24(date):
@@ -462,8 +500,10 @@ def hoursBetween(date_1, date_2):
             between two dates.
     """
     return int(
-        TimeUnit.HOURS.convert(date_2.getTime() - date_1.getTime(),
-                               TimeUnit.MILLISECONDS))
+        TimeUnit.HOURS.convert(
+            date_2.getTime() - date_1.getTime(), TimeUnit.MILLISECONDS
+        )
+    )
 
 
 def isAfter(date_1, date_2):
@@ -553,8 +593,9 @@ def millisBetween(date_1, date_2):
         long: An integer that is representative of the difference
             between two dates.
     """
-    return TimeUnit.MILLISECONDS.convert(date_2.getTime() - date_1.getTime(),
-                                         TimeUnit.MILLISECONDS)
+    return TimeUnit.MILLISECONDS.convert(
+        date_2.getTime() - date_1.getTime(), TimeUnit.MILLISECONDS
+    )
 
 
 def minutesBetween(date_1, date_2):
@@ -569,8 +610,10 @@ def minutesBetween(date_1, date_2):
             between two dates.
     """
     return int(
-        TimeUnit.MINUTES.convert(date_2.getTime() - date_1.getTime(),
-                                 TimeUnit.MILLISECONDS))
+        TimeUnit.MINUTES.convert(
+            date_2.getTime() - date_1.getTime(), TimeUnit.MILLISECONDS
+        )
+    )
 
 
 def monthsBetween(date_1, date_2):
@@ -602,9 +645,9 @@ def now():
     return Date()
 
 
-def parse(dateString,
-          formatString='yyyy-MM-dd HH:mm:ss',
-          locale=Locale.ENGLISH):
+def parse(
+    dateString, formatString="yyyy-MM-dd HH:mm:ss", locale=Locale.ENGLISH
+):
     """Attempts to parse a string and create a Date. Causes
     ParseException if the date dateString parameter is in an
     unrecognized format.
@@ -638,8 +681,10 @@ def secondsBetween(date_1, date_2):
             two dates.
     """
     return int(
-        TimeUnit.SECONDS.convert(date_2.getTime() - date_1.getTime(),
-                                 TimeUnit.MILLISECONDS))
+        TimeUnit.SECONDS.convert(
+            date_2.getTime() - date_1.getTime(), TimeUnit.MILLISECONDS
+        )
+    )
 
 
 def setTime(date, hour, minute, second):

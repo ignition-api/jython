@@ -5,8 +5,14 @@
 The following functions give you access to read and write to files."""
 
 __all__ = [
-    'fileExists', 'getTempFile', 'openFile', 'openFiles', 'readFileAsBytes',
-    'readFileAsString', 'saveFile', 'writeFile'
+    "fileExists",
+    "getTempFile",
+    "openFile",
+    "openFiles",
+    "readFileAsBytes",
+    "readFileAsString",
+    "saveFile",
+    "writeFile",
 ]
 
 from java.io import File
@@ -39,7 +45,8 @@ def getTempFile(extension):
         str: The path to the newly created temp file.
     """
     import tempfile
-    return tempfile.NamedTemporaryFile(suffix='.' + extension).name
+
+    return tempfile.NamedTemporaryFile(suffix="." + extension).name
 
 
 def openFile(extension=None, defaultLocation=None):
@@ -104,7 +111,7 @@ def readFileAsBytes(filepath):
     return Files.readAllBytes(filepath)
 
 
-def readFileAsString(filepath, encoding='UTF-8'):
+def readFileAsString(filepath, encoding="UTF-8"):
     """Opens the file found at path filename, and reads the entire file.
     Returns the file as a string. Common things to do with this string
     would be to load it into the text property of a component, upload it
@@ -123,6 +130,7 @@ def readFileAsString(filepath, encoding='UTF-8'):
     """
     from java.nio.charset import Charset
     from java.nio.file import Paths
+
     charset = Charset.forName(encoding)
     return Files.readString(Paths.get(filepath), charset)
 
@@ -148,7 +156,7 @@ def saveFile(filename, extension=False, typeDesc=None):
     return None
 
 
-def writeFile(filepath, data, append=False, encoding='UTF-8'):
+def writeFile(filepath, data, append=False, encoding="UTF-8"):
     """Writes the given data to the file at file path filename. If the
     file exists, the append argument determines whether or not it is
     overwritten (the default) or appended to. The data argument can be
