@@ -1,25 +1,43 @@
 <!--- Badges --->
-![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)
 ![GitHub last commit (jython)](https://img.shields.io/github/last-commit/thecesrom/Ignition/jython)
-![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)
+[![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)](https://github.com/thecesrom/Ignition/graphs/contributors)
+[![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)](https://github.com/thecesrom/Ignition/blob/jython/LICENSE)
+[![GitHub downloads](https://img.shields.io/github/downloads/thecesrom/Ignition/total)](https://github.com/thecesrom/Ignition/releases)
 [![time tracker](https://wakatime.com/badge/github/thecesrom/Ignition.svg)](https://wakatime.com/badge/github/thecesrom/Ignition)
 [![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/thecesrom/Ignition/discussions)
 
 # Ignition
 
 Ignition is a set of packages and modules that allow developers to get code completion for Ignition Scripting API scripting functions in their IDE of choice.
 
+# Releases
+
+Check the [releases page](https://github.com/thecesrom/Ignition/releases) and download the one for your current version.
+
+If you can't find it, feel free to submit your request on our [Discussions](https://github.com/thecesrom/Ignition/discussions).
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-* Java 11.0.7 ([found here](https://www.azul.com/downloads/zulu-community/?version=java-11-lts&architecture=x86-64-bit&package=jdk&show-old-builds=true))
-* Jython 2.7.1 ([download here](https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar))
+* Java 11
+    * From [Azul](https://www.azul.com/downloads/zulu-community/?version=java-11-lts&architecture=x86-64-bit&package=jdk&show-old-builds=true)
+    * Or with Homebrew
+    ```bash
+    $ brew install --cask zulu11
+    ```
+* Jython 2.7.1
+    * From [maven.org](https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar)
+    * Or with Homebrew
+    ```bash
+    $ brew install coatl-dev/coatl-dev/jython@2.7.1
+    ```
 * You are familiar with [Ignition 8.1 Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
 
 ## Using Ignition
 
-To use Ignition, add it as a dependency to your scripting project.
+To use Ignition, download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
 
 ## Packages
 
