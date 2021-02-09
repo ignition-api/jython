@@ -49,9 +49,10 @@ __all__ = [
     "translate",
 ]
 
+from java.lang import Object, Thread
+
 import system.date
 import system.security
-from java.lang import Object, Thread
 from system.dataset import Dataset, PyDataSet
 
 

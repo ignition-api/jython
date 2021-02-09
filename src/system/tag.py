@@ -41,8 +41,9 @@ __all__ = [
 
 import warnings
 
-import system.date
 from java.lang import Object
+
+import system.date
 
 
 class BrowseResults(Object):

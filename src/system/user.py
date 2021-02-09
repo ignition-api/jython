@@ -38,9 +38,10 @@ __all__ = [
 
 from abc import ABCMeta, abstractmethod
 
-import system.date
 from java.lang import Object
 from java.util import Locale
+
+import system.date
 
 
 class ContactInfo(Object):

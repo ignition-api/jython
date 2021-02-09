@@ -39,6 +39,7 @@ __all__ = [
 
 from java.lang import Object
 from javax.swing import JComponent
+
 from system.dataset import Dataset, PyDataSet
 
 # Type codes

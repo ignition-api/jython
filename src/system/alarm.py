@@ -21,8 +21,9 @@ __all__ = [
 
 from abc import ABCMeta, abstractmethod
 
-import system.date
 from java.lang import Object
+
+import system.date
 
 
 class AlarmQueryResults(ABCMeta):

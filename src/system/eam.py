@@ -8,9 +8,10 @@ the Gateway.
 
 __all__ = ["getGroups", "queryAgentHistory", "queryAgentStatus", "runTask"]
 
-import system.date
 from java.lang import Object
 from java.util import Locale
+
+import system.date
 from system.dataset import Dataset
 
 
