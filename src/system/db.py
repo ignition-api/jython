@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Database Functions
+
+"""
+Database Functions
+
 The following functions give you access to view and modify data in the
 database.
 """
@@ -96,7 +99,8 @@ class SProcCall(Object):
         pass
 
     def getResultSet(self):
-        """Returns a dataset that is the resulting data of the stored
+        """
+        Returns a dataset that is the resulting data of the stored
         procedure, if any.
 
         Returns:
@@ -107,8 +111,9 @@ class SProcCall(Object):
         return Dataset()
 
     def getUpdateCount(self):
-        """Returns the number of rows modified by the stored procedure,
-        or -1 if not applicable.
+        """
+        Returns the number of rows modified by the stored procedure, or
+        -1 if not applicable.
 
         Returns:
              int: The number of rows modified by the stored procedure,
@@ -118,7 +123,8 @@ class SProcCall(Object):
         return 1
 
     def getReturnValue(self):
-        """Returns the return value, if registerReturnParam had been
+        """
+        Returns the return value, if registerReturnParam had been
         called.
 
         Returns:
@@ -129,7 +135,8 @@ class SProcCall(Object):
         return 0
 
     def getOutParamValue(self, param):
-        """Returns the value of the previously registered out-parameter.
+        """
+        Returns the value of the previously registered out-parameter.
 
         Args:
             param (object): Index (int) or name (str) of the previously
@@ -143,7 +150,8 @@ class SProcCall(Object):
         return 0
 
     def registerInParam(self, param, typeCode, value):
-        """Registers an in parameter for the stored procedure.
+        """
+        Registers an in parameter for the stored procedure.
 
         Args:
             param (object): Index (int starting at 1, not 0), or name
@@ -154,7 +162,8 @@ class SProcCall(Object):
         print (self, param, typeCode, value)
 
     def registerOutParam(self, param, typeCode):
-        """Registers an out parameter for the stored procedure.
+        """
+        Registers an out parameter for the stored procedure.
 
         Args:
             param (object): Index (int starting at 1, not 0), or name
@@ -164,8 +173,8 @@ class SProcCall(Object):
         print (self, param, typeCode)
 
     def registerReturnParam(self, typeCode):
-        """Use this function to specify the datatype of the returned
-        value.
+        """
+        Use this function to specify the datatype of the returned value.
 
         Args:
             typeCode (int): Type code constant.
@@ -184,7 +193,8 @@ def addDatasource(
     validationQuery,
     maxConnections=8,
 ):
-    """Adds a new database connection in Ignition.
+    """
+    Adds a new database connection in Ignition.
 
     Args:
         jdbcDriver (str): The name of the JDBC driver in Ignition.
@@ -213,7 +223,8 @@ def addDatasource(
 
 
 def beginNamedQueryTransaction(*args):
-    """Begins a new database transaction using Named Queries. Database
+    """
+    Begins a new database transaction using Named Queries. Database
     transactions are used to execute multiple queries in an atomic
     fashion. After executing queries, you must either commit the
     transaction to have your changes take effect, or rollback the
@@ -253,8 +264,9 @@ def beginNamedQueryTransaction(*args):
 
 
 def beginTransaction(database=None, isolationLevel=None, timeout=None):
-    """Begins a new database transaction. Database transactions are used
-    to execute multiple queries in an atomic fashion. After executing
+    """
+    Begins a new database transaction. Database transactions are used to
+    execute multiple queries in an atomic fashion. After executing
     queries, you must either commit the transaction to have your changes
     take effect, or rollback the transaction which will make all
     operations since the last commit not take place. The transaction is
@@ -295,10 +307,10 @@ def beginTransaction(database=None, isolationLevel=None, timeout=None):
 
 
 def clearAllNamedQueryCaches(*args):
-    """This clears the caches of all Named Queries in a project. If
-    called from the Shared Scope (i.e., Tag Event Scripts, Alarm
-    Pipelines, etc.) then the name of the project must be passed as a
-    parameter.
+    """
+    This clears the caches of all Named Queries in a project. If called
+    from the Shared Scope (i.e., Tag Event Scripts, Alarm Pipelines,
+    etc.) then the name of the project must be passed as a parameter.
 
     When calling from the Project Scope use:
     system.db.clearAllNamedQueryCaches()
@@ -313,7 +325,8 @@ def clearAllNamedQueryCaches(*args):
 
 
 def clearNamedQueryCache(*args):
-    """This clears the cache of a Named Query. If called from the Shared
+    """
+    This clears the cache of a Named Query. If called from the Shared
     Scope (i.e., Tag Event Scripts, Alarm Pipelines, etc.) then the name
     of the project must be passed as a parameter.
 
@@ -330,8 +343,9 @@ def clearNamedQueryCache(*args):
 
 
 def closeTransaction(tx):
-    """Closes the transaction with the given ID. Note that you must
-    commit or rollback the transaction before you close it. Closing the
+    """
+    Closes the transaction with the given ID. Note that you must commit
+    or rollback the transaction before you close it. Closing the
     transaction will return its database connection to the pool. The
     transaction ID will no longer be valid.
 
@@ -342,7 +356,8 @@ def closeTransaction(tx):
 
 
 def commitTransaction(tx):
-    """Performs a commit for the given transaction. This will make all
+    """
+    Performs a commit for the given transaction. This will make all
     statements executed against the transaction since its beginning or
     since the last commit or rollback take effect in the database. Until
     you commit a transaction, any changes that the transaction makes
@@ -356,7 +371,8 @@ def commitTransaction(tx):
 
 
 def createSProcCall(procedureName, database=None, tx=None, skipAudit=None):
-    """Creates an SProcCall object, which is a stored procedure call
+    """
+    Creates an SProcCall object, which is a stored procedure call
     context.
 
     Args:
@@ -365,7 +381,7 @@ def createSProcCall(procedureName, database=None, tx=None, skipAudit=None):
             against. If omitted or "", the project's default database
             connection will be used. Optional.
         tx (str): A transaction identifier. If omitted, the call will be
-            be executed in its own transaction. Optional.
+            executed in its own transaction. Optional.
         skipAudit (bool): A flag which, if set to True, will cause the
             procedure call to skip the audit system. Useful for some
             queries that have fields which won't fit into the audit log.
@@ -381,8 +397,9 @@ def createSProcCall(procedureName, database=None, tx=None, skipAudit=None):
 
 
 def dateFormat(date, formatPattern):
-    """This function is used to format Dates nicely as strings. It uses
-    a format string to guide its formatting behavior.
+    """
+    This function is used to format Dates nicely as strings. It uses a
+    format string to guide its formatting behavior.
 
     Args:
         date (Date): The Date object that you'd like to format.
@@ -397,8 +414,9 @@ def dateFormat(date, formatPattern):
 
 
 def execSProcCall(callContext):
-    """Executes a stored procedure call. The one parameter to this
-    function is an SProcCall - a stored procedure call context. See the
+    """
+    Executes a stored procedure call. The one parameter to this function
+    is an SProcCall - a stored procedure call context. See the
     description of system.db.createSProcCall for more information and
     examples.
 
@@ -411,8 +429,9 @@ def execSProcCall(callContext):
     print callContext
 
 
-def getConnectionInfo(name=None):
-    """Returns a dataset of information about a database connection.
+def getConnectionInfo(name=""):
+    """
+    Returns a dataset of information about a database connection.
 
     Args:
         name (str): The name of the database connection to find
@@ -420,16 +439,18 @@ def getConnectionInfo(name=None):
             omitted. Optional.
 
     Returns:
-        Dataset: A dataset containing information about the database
-            connection, or an empty dataset if the connection wasn't
-            found.
+        Dataset: A dataset containing information about the named
+            database connection or about the current project's default
+            database connection, or an empty dataset if the connection
+            wasn't found.
     """
     print name
     return Dataset()
 
 
 def getConnections():
-    """Returns a dataset of information about each configured database
+    """
+    Returns a dataset of information about each configured database
     connection. Each row represents a single connection.
 
     Returns:
@@ -440,13 +461,14 @@ def getConnections():
 
 
 def refresh(component, propertyName):
-    """This function will programmatically cause a SQL Query or DB
-    Browse property binding to execute immediately. This is most often
-    used for bindings that are set to Polling - Off. In this way, you
-    cause a binding to execute on demand, when you know that the results
-    of its query will return a new result. To use it, you simply specify
-    the component and name of the property on whose binding you'd like
-    to refresh.
+    """
+    This function will programmatically cause a SQL Query or DB Browse
+    property binding to execute immediately. This is most often used for
+    bindings that are set to Polling - Off. In this way, you cause a
+    binding to execute on demand, when you know that the results of its
+    query will return a new result. To use it, you simply specify the
+    component and name of the property on whose binding you'd like to
+    refresh.
 
     Args:
         component (JComponent): The component whose property you want to
@@ -463,7 +485,8 @@ def refresh(component, propertyName):
 
 
 def removeDatasource(name):
-    """Removes a database connection from Ignition.
+    """
+    Removes a database connection from Ignition.
 
     Args:
         name (str): The name of the database connection in Ignition.
@@ -472,7 +495,8 @@ def removeDatasource(name):
 
 
 def rollbackTransaction(tx):
-    """Performs a rollback on the given connection. This will make all
+    """
+    Performs a rollback on the given connection. This will make all
     statements executed against this transaction since its beginning or
     since the last commit  or rollback undone. Note that if you are done
     with the transaction, you must also close it after you do a rollback
@@ -485,9 +509,10 @@ def rollbackTransaction(tx):
 
 
 def runNamedQuery(*args):
-    """Runs a named query and returns the results. Note that the number
-    of parameters in the function is determined by scope. Both versions
-    of the function are listed below.
+    """
+    Runs a named query and returns the results. Note that the number of
+    parameters in the function is determined by scope. Both versions of
+    the function are listed below.
 
     When calling from the Project Scope use:
     system.db.runNamedQuery(path, parameters, [tx], [getKey])
@@ -511,11 +536,12 @@ def runNamedQuery(*args):
 
 
 def runPrepQuery(query, args, database="", tx=None):
-    """Runs a  prepared statement  against the database, returning the
+    """
+    Runs a  prepared statement  against the database, returning the
     results in a PyDataSet. Prepared statements differ from regular
     queries in that they can use a special placeholder, the
-    question-mark character ( ? ) in the query where any dynamic
-    arguments would go, and then use an array of values to provide real
+    question-mark character (?) in the query where any dynamic arguments
+    would go, and then use an array of values to provide real
     information for those arguments. Make sure that the length of your
     argument array matches the number of question-mark placeholders in
     your query.
@@ -549,11 +575,12 @@ def runPrepQuery(query, args, database="", tx=None):
 def runPrepUpdate(
     query, args, database="", tx=None, getKey=False, skipAudit=True
 ):
-    """Runs a  prepared statement  against the database, returning the
+    """
+    Runs a  prepared statement  against the database, returning the
     number of rows that were affected. Prepared statements differ from
     regular queries in that they can use a special placeholder, the
-    question-mark character ( ? ) in the query where any dynamic
-    arguments would go, and then use an array of values to provide real
+    question-mark character (?) in the query where any dynamic arguments
+    would go, and then use an array of values to provide real
     information for those arguments. Make sure that the length of your
     argument array matches the number of question-mark placeholders in
     your query. This call should be used for UPDATE, INSERT, and DELETE
@@ -590,7 +617,8 @@ def runPrepUpdate(
 
 
 def runQuery(query, database="", tx=None):
-    """Runs a SQL query, usually a SELECT query, against a database,
+    """
+    Runs a SQL query, usually a SELECT query, against a database,
     returning the results as a dataset. If no database is specified, or
     the database is the empty-string "", then the current project's
     default database connection will be used. The results are returned
@@ -613,7 +641,8 @@ def runQuery(query, database="", tx=None):
 
 
 def runScalarPrepQuery(query, args, database="", tx=None):
-    """Runs a prepared statement against a database connection just like
+    """
+    Runs a prepared statement against a database connection just like
     the runPrepQuery function, but only returns the value from the first
     row and column. If no results are returned from the query, the
     special value None is returned.
@@ -640,7 +669,8 @@ def runScalarPrepQuery(query, args, database="", tx=None):
 
 
 def runScalarQuery(query, database, tx):
-    """Runs a query against a database connection just like the runQuery
+    """
+    Runs a query against a database connection just like the runQuery
     function, but only returns the value from the first row and column.
     If no results are returned from the query, the special value None is
     returned.
@@ -663,9 +693,10 @@ def runScalarQuery(query, database, tx):
 
 
 def runSFNamedQuery(*args):
-    """Runs a named query that goes through the Store and Forward
-    system. Note that the number of parameters in the function is
-    determined by scope.
+    """
+    Runs a named query that goes through the Store and Forward system.
+    Note that the number of parameters in the function is determined by
+    scope.
 
     When calling from the Project Scope use:
     system.db.runSFNamedQuery(path, parameters, [getKey])
@@ -685,15 +716,16 @@ def runSFNamedQuery(*args):
 
 
 def runSFPrepUpdate(query, args, datasources):
-    """Runs a prepared statement query through the store and forward
-    system and to multiple datasources at the same time. Prepared
-    statements differ from regular queries in that they can use a
-    special placeholder, the question-mark character (?) in the query
-    where any dynamic arguments would go, and then use an array of
-    values to provide real information for those arguments. Make sure
-    that the length of your argument array matches the number of
-    question-mark placeholders in your query. This call should be used
-    for UPDATE, INSERT, and DELETE queries.
+    """
+    Runs a prepared statement query through the store and forward system
+    and to multiple datasources at the same time. Prepared statements
+    differ from regular queries in that they can use a special
+    placeholder, the question-mark character (?) in the query where any
+    dynamic arguments would go, and then use an array of values to
+    provide real information for those arguments. Make sure that the
+    length of your argument array matches the number of question-mark
+    placeholders in your query. This call should be used for UPDATE,
+    INSERT, and DELETE queries.
 
     Args:
         query (str): A query (typically an UPDATE, INSERT, or DELETE) to
@@ -713,8 +745,9 @@ def runSFPrepUpdate(query, args, datasources):
 
 
 def runSFUpdateQuery(query, datasources):
-    """Runs an query through the store and forward system and to
-    multiple datasources at the same time.
+    """
+    Runs an query through the store and forward system and to multiple
+    datasources at the same time.
 
     Args:
         query (str): A query (typically an UPDATE, INSERT, or DELETE) to
@@ -730,15 +763,15 @@ def runSFUpdateQuery(query, datasources):
 
 
 def runUpdateQuery(query, database="", tx=None, getKey=False, skipAudit=True):
-    """Runs a query against a database connection, returning the number
-    of rows affected. Typically this is an UPDATE, INSERT, or DELETE
-    query. If no database is specified, or the database is the
-    empty-string "", then the current project's default database
-    connection will be used.
+    """
+    Runs a query against a database connection, returning the number of
+    rows affected. Typically this is an UPDATE, INSERT, or DELETE query.
+    If no database is specified, or the database is the empty-string "",
+    then the current project's default database connection will be used.
 
-     Note that you may want to use the runPrepUpdate query if your query
-     is constructed with user input (to avoid the user's input from
-     breaking your syntax) or if you need to insert binary or BLOB data.
+    Note that you may want to use the runPrepUpdate query if your query
+    is constructed with user input (to avoid the user's input from
+    breaking your syntax) or if you need to insert binary or BLOB data.
 
     Args:
         query (str): A SQL query, usually an INSERT, UPDATE, or DELETE
@@ -767,7 +800,8 @@ def runUpdateQuery(query, database="", tx=None, getKey=False, skipAudit=True):
 
 
 def setDatasourceConnectURL(name, connectUrl):
-    """Changes the connect URL for a given database connection.
+    """
+    Changes the connect URL for a given database connection.
 
     Args:
         name (str): The name of the database connection in Ignition.
@@ -777,7 +811,8 @@ def setDatasourceConnectURL(name, connectUrl):
 
 
 def setDatasourceEnabled(name, enabled):
-    """Enables/disables a given database connection.
+    """
+    Enables/disables a given database connection.
 
     Args:
         name (str): The name of the database connection in Ignition.
@@ -788,7 +823,8 @@ def setDatasourceEnabled(name, enabled):
 
 
 def setDatasourceMaxConnections(name, maxConnections):
-    """Sets the Max Active and Max Idle parameters of a given database
+    """
+    Sets the Max Active and Max Idle parameters of a given database
     connection.
 
     Ags:

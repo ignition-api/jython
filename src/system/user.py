@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""User Functions
+
+"""
+User Functions
+
 The following functions give you access to view and edit users in the
 Gateway.
 """
@@ -51,10 +54,13 @@ class ContactInfo(Object):
 
 
 class HolidayModel(Object):
-    """HolidayModel object."""
+    """
+    HolidayModel object.
+    """
 
     def __init__(self, name, date, repeatAnnually):
-        """HolidayModel instance.
+        """
+        HolidayModel instance.
 
         Args:
             name (str): The name.
@@ -141,7 +147,9 @@ class UIResponse(Object):
 
 
 class User(ABCMeta):
-    """User Interface."""
+    """
+    User Interface.
+    """
 
     def __new__(mcs, *args, **kwargs):
         pass
@@ -172,8 +180,9 @@ class User(ABCMeta):
 
 
 class PyUser(User):
-    """A User implementation that delegates to another user object, but
-    has some methods that are more scripting friendly.
+    """
+    A User implementation that delegates to another user object, but has
+    some methods that are more scripting friendly.
     """
 
     Badge = "badge"
@@ -188,7 +197,8 @@ class PyUser(User):
     USERNAME_PATTERN = r"[\p{Alnum}][ @\w.\s\-]{1, 49}"
 
     def addContactInfo(cls, *args):
-        """Convenience method for scripting to add a new contactInfo
+        """
+        Convenience method for scripting to add a new contactInfo
         easily.
 
         Usage:
@@ -201,8 +211,9 @@ class PyUser(User):
         print (cls, args)
 
     def addRole(cls, role):
-        """Convenience method for scripting to add a new role easily.
-        Only works if user type supports roles.
+        """
+        Convenience method for scripting to add a new role easily. Only
+        works if user type supports roles.
 
         Args:
             role (str): A new role to add. If empty or null, no
@@ -214,7 +225,8 @@ class PyUser(User):
         print (cls, roles)
 
     def addScheduleAdjustment(cls, start, end, available=True, note=None):
-        """Convenience method for scripting to add a new schedule
+        """
+        Convenience method for scripting to add a new schedule
         adjustment easily.
 
         Args:
@@ -229,7 +241,8 @@ class PyUser(User):
         print (cls, start, end, available, note)
 
     def addScheduleAdjustments(cls, scheduleAdjustments):
-        """Add Schedule Adjustments.
+        """
+        Add Schedule Adjustments.
 
         Args:
             scheduleAdjustments (ScheduleAdjustment):
@@ -244,9 +257,10 @@ class PyUser(User):
         pass
 
     def getContactInfo(cls):
-        """Returns a sequence of ContactInfo objects. Each of these
-        objects will have a contactType and value property representing
-        the contact information, both strings.
+        """
+        Returns a sequence of ContactInfo objects. Each of these objects
+        will have a contactType and value property representing the
+        contact information, both strings.
 
         Returns:
             list[ContactInfo]: A sequence of ContactInfo objects.
@@ -326,7 +340,8 @@ class PyUser(User):
 
 
 def addCompositeSchedule(name, scheduleOne, scheduleTwo, description=None):
-    """Allows two schedules to be combined into a composite schedule.
+    """
+    Allows two schedules to be combined into a composite schedule.
 
     Args:
         name (str): The name of the new composite schedule.
@@ -344,7 +359,8 @@ def addCompositeSchedule(name, scheduleOne, scheduleTwo, description=None):
 
 
 def addHoliday(holiday):
-    """Allows a holiday to be added.
+    """
+    Allows a holiday to be added.
 
     Args:
         holiday (HolidayModel): The holiday to add, as a HolidayModel
@@ -359,7 +375,8 @@ def addHoliday(holiday):
 
 
 def addRole(userSource, role):
-    """Allows a role to the specified user source. When altering the
+    """
+    Allows a role to the specified user source. When altering the
     Gateway System User Source, the Allow User Admin setting must be
     enabled.
 
@@ -378,7 +395,8 @@ def addRole(userSource, role):
 
 
 def addSchedule(schedule):
-    """Allows a schedule to be added.
+    """
+    Allows a schedule to be added.
 
     Args:
         schedule (ScheduleModel): The schedule to add. Can be a
@@ -394,7 +412,8 @@ def addSchedule(schedule):
 
 
 def addUser(userSource, user):
-    """Adds a new user to a user source. Used in combination with
+    """
+    Adds a new user to a user source. Used in combination with
     getNewUser to create new user.
 
     Args:
@@ -411,7 +430,8 @@ def addUser(userSource, user):
 
 
 def createScheduleAdjustment(startDate, endDate, isAvailable, note):
-    """Creates a schedule adjustment.
+    """
+    Creates a schedule adjustment.
 
     Args:
         startDate (datetime): The starting date of the schedule
@@ -429,7 +449,8 @@ def createScheduleAdjustment(startDate, endDate, isAvailable, note):
 
 
 def editHoliday(holidayName, holiday):
-    """Allows a holiday to be edited.
+    """
+    Allows a holiday to be edited.
 
     Args:
         holidayName (str): The name of the holiday to edit. Name is
@@ -446,7 +467,8 @@ def editHoliday(holidayName, holiday):
 
 
 def editRole(userSource, oldName, newName):
-    """Renames a role in the specified user source. When altering the
+    """
+    Renames a role in the specified user source. When altering the
     Gateway System User Source, the Allow User Admin setting must be
     enabled.
 
@@ -466,7 +488,8 @@ def editRole(userSource, oldName, newName):
 
 
 def editSchedule(scheduleName, schedule):
-    """Allows a schedule to be edited.
+    """
+    Allows a schedule to be edited.
 
     Args:
         scheduleName (str): The name of the schedule to edit. Name is
@@ -484,8 +507,9 @@ def editSchedule(scheduleName, schedule):
 
 
 def editUser(userSource, user):
-    """Alters a specific user in a user source, replacing the previous
-    data with the new data passed in.
+    """
+    Alters a specific user in a user source, replacing the previous data
+    with the new data passed in.
 
     Args:
         userSource (str): The user source in which the user is found.
@@ -502,7 +526,8 @@ def editUser(userSource, user):
 
 
 def getHoliday(holidayName):
-    """Returns a specific holiday.
+    """
+    Returns a specific holiday.
 
     Args:
         holidayName (str): The name of the holiday to return.
@@ -517,7 +542,8 @@ def getHoliday(holidayName):
 
 
 def getHolidayNames():
-    """Returns a collection of Strings of all holiday names.
+    """
+    Returns a collection of Strings of all holiday names.
 
     Returns:
         list[str]: A list of all holiday names, or an empty list if no
@@ -527,7 +553,8 @@ def getHolidayNames():
 
 
 def getHolidays():
-    """Returns a sequence of all of the holidays available.
+    """
+    Returns a sequence of all of the holidays available.
 
     Returns:
         list[HolidayModel]: A list of holidays, as HolidayModel objects.
@@ -536,7 +563,8 @@ def getHolidays():
 
 
 def getNewUser(userSource, username):
-    """Creates a new user object. The user will not be added to the user
+    """
+    Creates a new user object. The user will not be added to the user
     source until addUser is called.
 
     Args:
@@ -554,7 +582,8 @@ def getNewUser(userSource, username):
 
 
 def getRoles(userSource):
-    """Returns a sequence of strings representing all of the roles
+    """
+    Returns a sequence of strings representing all of the roles
     configured in a specific user source.
 
     Args:
@@ -569,7 +598,8 @@ def getRoles(userSource):
 
 
 def getSchedule(scheduleName):
-    """Returns a specific schedule.
+    """
+    Returns a specific schedule.
 
     Args:
         scheduleName (str): The name of the schedule to return.
@@ -589,7 +619,8 @@ def getSchedule(scheduleName):
 
 
 def getScheduledUsers(userSource, date=None):
-    """Returns a list of users that are scheduled on. If no users are
+    """
+    Returns a list of users that are scheduled on. If no users are
     scheduled, it will return an empty list.
 
     Args:
@@ -610,8 +641,9 @@ def getScheduledUsers(userSource, date=None):
 
 
 def getScheduleNames():
-    """Returns a sequence of strings representing the names of all of
-    the schedules available.
+    """
+    Returns a sequence of strings representing the names of all of the
+    schedules available.
 
     Returns:
         list[str]: A List of Strings that holds the names of all the
@@ -621,7 +653,8 @@ def getScheduleNames():
 
 
 def getSchedules():
-    """Returns a sequence of all available schedule models, which can be
+    """
+    Returns a sequence of all available schedule models, which can be
     used to return configuration information on the schedule, such as
     time for each day of the week.
 
@@ -634,7 +667,8 @@ def getSchedules():
 
 
 def getUser(userSource, username):
-    """Looks up a specific user in a user source, by username. The full
+    """
+    Looks up a specific user in a user source, by username. The full
     User object is returned except for the user's password.
 
     Args:
@@ -652,7 +686,8 @@ def getUser(userSource, username):
 
 
 def getUsers(userSource):
-    """Retrieves the list of users in a specific user source. The User
+    """
+    Retrieves the list of users in a specific user source. The User
     objects that are returned contain all of the information about that
     user, except for the user's password.
 
@@ -670,7 +705,8 @@ def getUsers(userSource):
 
 
 def isUserScheduled(user, date=None):
-    """Will check if a specified User is scheduled currently or on a
+    """
+    Will check if a specified User is scheduled currently or on a
     specified date/time.
 
     Args:
@@ -689,7 +725,8 @@ def isUserScheduled(user, date=None):
 
 
 def removeHoliday(holidayName):
-    """Allows a holiday to be deleted.
+    """
+    Allows a holiday to be deleted.
 
     Args:
         holidayName (str): The name of the holiday to delete. Name is
@@ -704,7 +741,8 @@ def removeHoliday(holidayName):
 
 
 def removeRole(userSource, role):
-    """Removes a role from the specified user source. When altering the
+    """
+    Removes a role from the specified user source. When altering the
     Gateway System User Source, the Allow User Admin setting must be
     enabled.
 
@@ -722,9 +760,10 @@ def removeRole(userSource, role):
 
 
 def removeSchedule(scheduleName):
-    """Allows a schedule to be deleted. Note that schedules which are
-    used in Composite Schedules can not be deleted until they are
-    removed from the Composite Schedule.
+    """
+    Allows a schedule to be deleted. Note that schedules which are used
+    in Composite Schedules can not be deleted until they are removed
+    from the Composite Schedule.
 
     Args:
         scheduleName (str): The name of the schedule to delete. Name is
@@ -739,7 +778,8 @@ def removeSchedule(scheduleName):
 
 
 def removeUser(userSource, username):
-    """Removes a specific user from the a user source based on username.
+    """
+    Removes a specific user from the a user source based on username.
     When altering the Gateway System User Source, the Allow User Admin
     setting must be enabled.
 

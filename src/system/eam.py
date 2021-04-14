@@ -1,9 +1,12 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""EAM Functions
-The following functions give you access to view EAM information from
-the Gateway.
+
+"""
+EAM Functions
+
+The following functions give you access to view EAM information from the
+Gateway.
 """
 
 __all__ = ["getGroups", "queryAgentHistory", "queryAgentStatus", "runTask"]
@@ -48,8 +51,9 @@ class UIResponse(Object):
 
 
 def getGroups():
-    """Returns the names of the defined agent organizational groups in
-    the Gateway.
+    """
+    Returns the names of the defined agent organizational groups in the
+    Gateway.
 
     Returns:
         list[str]: A string list of group names.
@@ -60,7 +64,8 @@ def getGroups():
 def queryAgentHistory(
     groupIds=None, agentIds=None, startDate=None, endDate=None, limit=100
 ):
-    """Returns a list of the most recent agent events.
+    """
+    Returns a list of the most recent agent events.
 
     Args:
         groupIds (list[str]): A list of groups to restrict the results
@@ -90,7 +95,8 @@ def queryAgentHistory(
 
 
 def queryAgentStatus(groupIds=None, agentIds=None, isConnected=True):
-    """Returns the current state of the matching agents.
+    """
+    Returns the current state of the matching agents.
 
     Args:
         groupIds (list[str]): A list of groups to restrict the results
@@ -113,7 +119,8 @@ def queryAgentStatus(groupIds=None, agentIds=None, isConnected=True):
 
 
 def runTask(taskname):
-    """Takes the name of a task as an argument as a string (must be
+    """
+    Takes the name of a task as an argument as a string (must be
     configured on the Controller before hand), attempts to execute the
     task.
 

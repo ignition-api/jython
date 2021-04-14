@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""GUI Functions
+
+"""
+GUI Functions
+
 The following functions allow you to control windows and create popup
 interfaces.
 """
@@ -66,7 +69,9 @@ COORD_DESIGNER = 1
 
 
 class FPMIWindow(JInternalFrame):
-    """FPMIWindow object."""
+    """
+    FPMIWindow object.
+    """
 
     # Fields.
     CACHE_ALWAYS = 2
@@ -95,7 +100,9 @@ class FPMIWindow(JInternalFrame):
 
 
 class WindowUtilities(Object):
-    """WindowUtilities object."""
+    """
+    WindowUtilities object.
+    """
 
     pass
 
@@ -105,7 +112,8 @@ def _dummy(message, title):
 
 
 def chooseColor(initialColor, dialogTitle="Choose Color"):
-    """Prompts the user to pick a color using the default color-chooser
+    """
+    Prompts the user to pick a color using the default color-chooser
     dialog box.
 
     Args:
@@ -122,7 +130,8 @@ def chooseColor(initialColor, dialogTitle="Choose Color"):
 
 
 def closeDesktop(handle="primary"):
-    """Allows you to close any of the open desktops associated with the
+    """
+    Allows you to close any of the open desktops associated with the
     current client. See the Multi-Monitor Clients page for more details
     about using multiple monitors.
 
@@ -137,9 +146,10 @@ def closeDesktop(handle="primary"):
 
 
 def color(*args):
-    """Creates a new color object, either by parsing a string or by
-    having the RGB[A] channels specified explicitly. See toColor to see
-    a list of available color names.
+    """
+    Creates a new color object, either by parsing a string or by having
+    the RGB[A] channels specified explicitly. See toColor to see a list
+    of available color names.
 
     Args:
         args: Variable-length argument list.
@@ -151,8 +161,9 @@ def color(*args):
 
 
 def confirm(message, title="Confirm", allowCancel=False):
-    """Displays a confirmation dialog box to the user with "Yes", "No"
-    and "Cancel" options, and a custom message.
+    """
+    Displays a confirmation dialog box to the user with "Yes", "No" and
+    "Cancel" options, and a custom message.
 
     Args:
         message (str): The message to show in the confirmation dialog.
@@ -188,9 +199,10 @@ def confirm(message, title="Confirm", allowCancel=False):
 
 
 def convertPointToScreen(x, y, event):
-    """Converts a pair of coordinates that are relative to the
-    upper-left corner of some component to be relative to the upper-left
-    corner of the entire screen.
+    """
+    Converts a pair of coordinates that are relative to the upper-left
+    corner of some component to be relative to the upper-left corner of
+    the entire screen.
 
     Args:
         x (int): The X-coordinate, relative to the component that fired
@@ -207,14 +219,15 @@ def convertPointToScreen(x, y, event):
 
 
 def createPopupMenu(itemNames, itemFunctions):
-    """Creates a new popup menu, which can then be shown over a
-    component on a mouse event. To use this function, first create a
-    Python sequence whose entries are strings, and another sequence
-    whose entries are function objects. The strings will be the items
-    that are displayed in your popup menu, and when an item is clicked,
-    its corresponding function will be run. Passing in a function of
-    None will cause a separator line to appear in the popup menu, and
-    the corresponding string will not be displayed. Your functions must
+    """
+    Creates a new popup menu, which can then be shown over a component
+    on a mouse event. To use this function, first create a Python
+    sequence whose entries are strings, and another sequence whose
+    entries are function objects. The strings will be the items that are
+    displayed in your popup menu, and when an item is clicked, its
+    corresponding function will be run. Passing in a function of None
+    will cause a separator line to appear in the popup menu, and the
+    corresponding string will not be displayed. Your functions must
     accept an event object as an argument. See also: Functions. It is
     best to have the menu object created only once via an application
     specific library function. Then, call the show(event) function on
@@ -238,7 +251,8 @@ def createPopupMenu(itemNames, itemFunctions):
 
 
 def desktop(handle="primary"):
-    """Allows for invoking system.gui functions on a specific desktop.
+    """
+    Allows for invoking system.gui functions on a specific desktop.
 
     Args:
         handle (str): The handle for the desktop to use. The screen
@@ -256,7 +270,8 @@ def desktop(handle="primary"):
 
 
 def errorBox(message, title="Error"):
-    """Displays an error-style message box to the user.
+    """
+    Displays an error-style message box to the user.
 
     Args:
         message (str): The message to display in an error box.
@@ -268,7 +283,8 @@ def errorBox(message, title="Error"):
 
 
 def findWindow(path):
-    """Finds and returns a list of windows with the given path. If the
+    """
+    Finds and returns a list of windows with the given path. If the
     window is not open, an empty list will be returned. Useful for
     finding all instances of an open window that were opened with
     system.gui.openWindowInstance.
@@ -286,7 +302,8 @@ def findWindow(path):
 
 
 def getCurrentDesktop():
-    """Returns the handle of the desktop this function was called from.
+    """
+    Returns the handle of the desktop this function was called from.
     Commonly used with the system.gui.desktop and system.nav.desktop
     functions.
 
@@ -297,14 +314,15 @@ def getCurrentDesktop():
 
 
 def getDesktopHandles():
-    """Gets a list of all secondary handles of the open desktops
-    associated with the current client. In this case, secondary means
-    any desktop frame opened by the original client frame.
+    """
+    Gets a list of all secondary handles of the open desktops associated
+    with the current client. In this case, secondary means any desktop
+    frame opened by the original client frame.
 
     Example:
         If the original client opened 2 new frames ('left client' and
-        'right client'), then this function would return
-        ['left client', 'right client'].
+        'right client'), then this function would return ['left client',
+        'right client'].
 
     Returns:
         list[str]: A list of window handles of all secondary Desktop
@@ -314,8 +332,9 @@ def getDesktopHandles():
 
 
 def getOpenedWindowNames():
-    """Finds all of the currently open windows, returning a tuple of
-    their paths.
+    """
+    Finds all of the currently open windows, returning a tuple of their
+    paths.
 
     Returns:
         tuple: A tuple of strings, representing the path of each window
@@ -325,7 +344,8 @@ def getOpenedWindowNames():
 
 
 def getOpenedWindows():
-    """Finds all of the currently open windows, returning a tuple of
+    """
+    Finds all of the currently open windows, returning a tuple of
     references to them.
 
     Returns:
@@ -336,8 +356,9 @@ def getOpenedWindows():
 
 
 def getParentWindow(event):
-    """Finds the parent (enclosing) window for the component that fired
-    an event, returning a reference to it.
+    """
+    Finds the parent (enclosing) window for the component that fired an
+    event, returning a reference to it.
 
     Args:
         event (EventObject): A component event object.
@@ -351,9 +372,10 @@ def getParentWindow(event):
 
 
 def getQuality(component, propertyName):
-    """Returns the data quality for the property of the given component
-    as an integer. This function can be used to check the quality of a
-    Tag binding on a component in the middle of the script so that
+    """
+    Returns the data quality for the property of the given component as
+    an integer. This function can be used to check the quality of a Tag
+    binding on a component in the middle of the script so that
     alternative actions can be taken in the event of device
     disconnections.
 
@@ -370,8 +392,9 @@ def getQuality(component, propertyName):
 
 
 def getScreenIndex():
-    """Returns the returns an integer value representing the current
-    screen index based on the screen this function was called from.
+    """
+    Returns the returns an integer value representing the current screen
+    index based on the screen this function was called from.
 
     Returns:
         int: The screen that the function was called from.
@@ -380,8 +403,9 @@ def getScreenIndex():
 
 
 def getScreens():
-    """Get a list of all the monitors on the computer this client is
-    open on. Use with system.gui.setScreenIndex() to move the client.
+    """
+    Get a list of all the monitors on the computer this client is open
+    on. Use with system.gui.setScreenIndex() to move the client.
 
     Returns:
         list[tuple]: A sequence of tuples of the form (index, width,
@@ -391,7 +415,8 @@ def getScreens():
 
 
 def getSibling(event, name):
-    """Given a component event object, looks up a sibling component.
+    """
+    Given a component event object, looks up a sibling component.
     Shortcut for event.source.parent.getComponent("siblingName"). If no
     such sibling is found, the special value None is returned.
 
@@ -407,7 +432,8 @@ def getSibling(event, name):
 
 
 def getWindow(name):
-    """Finds a reference to an open window with the given name. Throws a
+    """
+    Finds a reference to an open window with the given name. Throws a
     ValueError if the named window is not open or not found.
 
     Args:
@@ -423,8 +449,9 @@ def getWindow(name):
 
 
 def getWindowNames():
-    """Returns a list of the paths of all windows in the current
-    project, sorted alphabetically.
+    """
+    Returns a list of the paths of all windows in the current project,
+    sorted alphabetically.
 
     Returns:
         tuple[str]: A tuple of strings, representing the path of each
@@ -434,7 +461,8 @@ def getWindowNames():
 
 
 def inputBox(message, defaultText=None):
-    """Opens up a popup input dialog box. This dialog box will show a
+    """
+    Opens up a popup input dialog box. This dialog box will show a
     prompt message, and allow the user to type in a string. When the
     user is done, they can press "OK" or "Cancel". If OK is pressed,
     this function will return with the value that they typed in. If
@@ -444,7 +472,7 @@ def inputBox(message, defaultText=None):
         message (str): The message to display for the input box. Will
             accept html formatting.
         defaultText (str): The default text to initialize the input box
-            with.
+            with. Optional.
 
     Returns:
         str: The string value that was entered in the input box.
@@ -473,7 +501,8 @@ def inputBox(message, defaultText=None):
 
 
 def isTouchscreenModeEnabled():
-    """Checks whether or not the running client's touchscreen mode is
+    """
+    Checks whether or not the running client's touchscreen mode is
     currently enabled.
 
     Returns:
@@ -484,7 +513,8 @@ def isTouchscreenModeEnabled():
 
 
 def messageBox(message, title="Information"):
-    """Displays an informational-style message popup box to the user.
+    """
+    Displays an informational-style message popup box to the user.
 
     Args:
         message (str): The message to display. Will accept html
@@ -506,8 +536,9 @@ def openDesktop(
     y=0,
     windows=None,
 ):
-    """Creates an additional Desktop in a new frame. For more details,
-    see the Multi-Monitor Clients page.
+    """
+    Creates an additional Desktop in a new frame. For more details, see
+    the Multi-Monitor Clients page.
 
     Args:
         screen (int): The screen index of which screen to place the new
@@ -538,7 +569,8 @@ def openDesktop(
 
 
 def openDiagnostics():
-    """Opens the client runtime diagnostics window, which provides
+    """
+    Opens the client runtime diagnostics window, which provides
     information regarding performance, logging, active threads,
     connection status, and the console. This provides an opportunity to
     open the diagnostics window in situations where the menu bar in the
@@ -547,10 +579,11 @@ def openDiagnostics():
     pass
 
 
-def passwordBox(message, title="", echoChar="*"):
-    """Pops up a special input box that uses a password field, so the
-    text isn't echoed back in clear-text to the user. Returns the text
-    they entered, or None if they canceled the dialog box.
+def passwordBox(message, title="Password", echoChar="*"):
+    """
+    Pops up a special input box that uses a password field, so the text
+    isn't echoed back in clear-text to the user. Returns the text they
+    entered, or None if they canceled the dialog box.
 
     Args:
         message (str): The message for the password prompt. Will accept
@@ -568,7 +601,8 @@ def passwordBox(message, title="", echoChar="*"):
 
 
 def setScreenIndex(index):
-    """Moves an open client to a specific monitor. Use with
+    """
+    Moves an open client to a specific monitor. Use with
     system.gui.getScreens() to identify monitors before moving.
 
     Args:
@@ -579,7 +613,8 @@ def setScreenIndex(index):
 
 
 def setTouchscreenModeEnabled(enabled):
-    """Alters a running client's touchscreen mode on the fly.
+    """
+    Alters a running client's touchscreen mode on the fly.
 
     Args:
         enabled (bool): The new value for touchscreen mode being
@@ -589,7 +624,8 @@ def setTouchscreenModeEnabled(enabled):
 
 
 def showNumericKeypad(initialValue=None, fontSize=None, usePasswordMode=False):
-    """Displays a modal on-screen numeric keypad, allowing for arbitrary
+    """
+    Displays a modal on-screen numeric keypad, allowing for arbitrary
     numeric entry using the mouse, or a finger on a touchscreen monitor.
     Returns the number that the user entered.
 
@@ -611,7 +647,8 @@ def showNumericKeypad(initialValue=None, fontSize=None, usePasswordMode=False):
 def showTouchscreenKeyboard(
     initialText=None, fontSize=None, passwordMode=False
 ):
-    """Displays a modal on-screen keyboard, allowing for arbitrary text
+    """
+    Displays a modal on-screen keyboard, allowing for arbitrary text
     entry using the mouse, or a finger on a touchscreen monitor. Returns
     the text that the user "typed".
 
@@ -641,12 +678,13 @@ def transform(
     acceleration=None,
     coordSpace=None,
 ):
-    """Sets a component's position and size at runtime.  Additional
+    """
+    Sets a component's position and size at runtime. Additional
     arguments for the duration, framesPerSecond, and acceleration of the
-    operation exist for animation.  An optional callback argument will
-    be executed when the transformation is complete. Note: The
+    operation exist for animation. An optional callback argument will be
+    executed when the transformation is complete. Note: The
     transformation is performed in Designer coordinate space on
-    components which are  centered or have more than 2 anchors.
+    components which are centered or have more than 2 anchors.
 
     Args:
         component (JComponent): The component to move or resize.
@@ -694,7 +732,8 @@ def transform(
 
 
 def warningBox(message, title="Warning"):
-    """Displays a message to the user in a warning style pop-up dialog.
+    """
+    Displays a message to the user in a warning style pop-up dialog.
 
     Args:
         message (str): The message to display in the warning box. Will
