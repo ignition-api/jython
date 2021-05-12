@@ -81,7 +81,7 @@ def executeReport(path, project="project", parameters=None, fileType="pdf"):
     return None
 
 
-def getReportNamesAsDataset(project="project"):
+def getReportNamesAsDataset(project="project", includeReportName=True):
     """
     Gets a data of all reports for a project. This dataset is
     particularly suited for display in a Tree View component.
@@ -89,6 +89,8 @@ def getReportNamesAsDataset(project="project"):
     Args:
         project (str):  The name of the project where the reports are
             located. Optional in client scope.
+        includeReportName (bool): When set to False, the end of Path
+            does not include the report name. Default is True. Optional.
 
     Returns:
         Dataset: A dataset of report paths and names for the project.
@@ -101,8 +103,8 @@ def getReportNamesAsDataset(project="project"):
     """
     if project is None:
         raise IllegalArgumentException()
-    else:
-        return Dataset()
+    print(project, includeReportName)
+    return Dataset()
 
 
 def getReportNamesAsList(project="project"):
@@ -124,5 +126,4 @@ def getReportNamesAsList(project="project"):
     """
     if project is None:
         raise IllegalArgumentException()
-    else:
-        return []
+    return []
