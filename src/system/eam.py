@@ -2,12 +2,13 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-EAM Functions
+"""EAM Functions.
 
 The following functions give you access to view EAM information from the
 Gateway.
 """
+
+from __future__ import print_function
 
 __all__ = ["getGroups", "queryAgentHistory", "queryAgentStatus", "runTask"]
 
@@ -35,7 +36,7 @@ class UIResponse(Object):
         pass
 
     def getLocale(self):
-        return self.locale
+        pass
 
     def getWarns(self):
         pass
@@ -51,9 +52,8 @@ class UIResponse(Object):
 
 
 def getGroups():
-    """
-    Returns the names of the defined agent organizational groups in the
-    Gateway.
+    """Returns the names of the defined agent organizational groups in
+    the Gateway.
 
     Returns:
         list[str]: A string list of group names.
@@ -64,8 +64,7 @@ def getGroups():
 def queryAgentHistory(
     groupIds=None, agentIds=None, startDate=None, endDate=None, limit=100
 ):
-    """
-    Returns a list of the most recent agent events.
+    """Returns a list of the most recent agent events.
 
     Args:
         groupIds (list[str]): A list of groups to restrict the results
@@ -90,13 +89,12 @@ def queryAgentHistory(
     startDate = (
         system.date.addHours(endDate, -8) if startDate is None else startDate
     )
-    print (groupIds, agentIds, startDate, endDate, limit)
+    print(groupIds, agentIds, startDate, endDate, limit)
     return Dataset()
 
 
 def queryAgentStatus(groupIds=None, agentIds=None, isConnected=True):
-    """
-    Returns the current state of the matching agents.
+    """Returns the current state of the matching agents.
 
     Args:
         groupIds (list[str]): A list of groups to restrict the results
@@ -114,13 +112,12 @@ def queryAgentStatus(groupIds=None, agentIds=None, isConnected=True):
             RunningStateInt, LicenseKey, and Version, where each row is
             a new agent.
     """
-    print (groupIds, agentIds, isConnected)
+    print(groupIds, agentIds, isConnected)
     return Dataset()
 
 
 def runTask(taskname):
-    """
-    Takes the name of a task as an argument as a string (must be
+    """Takes the name of a task as an argument as a string (must be
     configured on the Controller before hand), attempts to execute the
     task.
 
@@ -135,5 +132,5 @@ def runTask(taskname):
         UIResponse: A UIResponse with a list of infos, errors, and
             warnings.
     """
-    print taskname
+    print(taskname)
     return UIResponse(Locale.ENGLISH)
