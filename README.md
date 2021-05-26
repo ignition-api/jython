@@ -23,8 +23,8 @@ If you can't find it, feel free to submit your request on our [Discussions](http
 
 Before you begin, ensure you have met the following requirements:
 * Java 11
-    * From [Azul](https://www.azul.com/downloads/zulu-community/?version=java-11-lts&architecture=x86-64-bit&package=jdk&show-old-builds=true)
-    * Or with Homebrew
+    * From [Azul](https://www.azul.com/downloads/?version=java-11-lts&package=jdk)
+    * Or with Homebrew on macOS
     ```bash
     $ brew install --cask zulu11
     ```
