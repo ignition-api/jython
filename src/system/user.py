@@ -43,7 +43,7 @@ __all__ = [
 from abc import ABCMeta, abstractmethod
 
 from java.lang import Object
-from java.util import Locale
+from java.util import Date, Locale
 
 import system.date
 
@@ -62,7 +62,7 @@ class HolidayModel(Object):
 
         Args:
             name (str): The name.
-            date (datetime): The date.
+            date (Date): The date.
             repeatAnnually (bool): Repeat annually.
         """
         self.name = name
@@ -224,9 +224,9 @@ class PyUser(User):
         adjustment easily.
 
         Args:
-            start (datetime): Date to start the schedule adjustment. Not
+            start (Date): Date to start the schedule adjustment. Not
                 null.
-            end (datetime): Date to end start the schedule adjustment.
+            end (Date): Date to end start the schedule adjustment.
                 Not null.
             available (bool): True if the employee is available during
                 this period. Optional.
@@ -471,9 +471,9 @@ def createScheduleAdjustment(startDate, endDate, isAvailable, note):
     """Creates a schedule adjustment.
 
     Args:
-        startDate (datetime): The starting date of the schedule
+        startDate (Date): The starting date of the schedule
             adjustment.
-        endDate (datetime): The ending date of the schedule adjustment.
+        endDate (Date): The ending date of the schedule adjustment.
         isAvailable (bool): True if the user is available during this
             schedule adjustment.
         note (str): A note about the schedule adjustment.

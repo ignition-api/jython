@@ -26,6 +26,7 @@ __all__ = [
 from abc import ABCMeta, abstractmethod
 
 from java.lang import Object
+from java.util import Date
 
 import system.date
 
@@ -206,10 +207,10 @@ def queryJournal(
     EventState, Priority, IsSystemEvent.
 
     Args:
-        startDate (datetime): The start of the time range to query.
+        startDate (Date): The start of the time range to query.
             Defaults to 8 hours previous to now if omitted. Time range
             is inclusive.
-        endDate (datetime): The end of the time range to query. Defaults
+        endDate (Date): The end of the time range to query. Defaults
             to "now" if omitted.
         journalName (str): The journal name to query.
         priority (list[str]): A list of possible priorities to match.
