@@ -1,4 +1,5 @@
 # Ignition
+
 <!--- Badges --->
 ![GitHub last commit (jython)](https://img.shields.io/github/last-commit/thecesrom/Ignition/jython)
 [![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)](https://github.com/thecesrom/Ignition/graphs/contributors)
@@ -22,15 +23,16 @@ If you can't find it, feel free to submit your request on our [Discussions](http
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
+
 * Java 11
-    * From [Azul](https://www.azul.com/downloads/?version=java-11-lts&package=jdk)
-    * Or with Homebrew on macOS
+  * From [Azul](https://www.azul.com/downloads/?version=java-11-lts&package=jdk)
+  * Or with Homebrew on macOS
     ```bash
     $ brew install --cask zulu11
     ```
 * Jython 2.7.1
-    * From [maven.org](https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar)
-    * Or with Homebrew
+  * From [maven.org](https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar)
+  * Or with Homebrew
     ```bash
     $ brew install coatl-dev/coatl-dev/jython@2.7.1
     ```
@@ -65,14 +67,13 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 
 ## Contributors
 
-Thanks to the everyone who has contributed to this project.
+Thanks to everyone who has contributed to this project.
 
 Up-to-date list of contributors can be found [here](https://github.com/thecesrom/Ignition/graphs/contributors).
 
 ## License
 
-See the [LICENSE](https://github.com/thecesrom/Ignition/blob/master/LICENSE).
-
+See the [LICENSE](https://github.com/thecesrom/Ignition/blob/HEAD/LICENSE).
 
 ## Code of conduct
 
