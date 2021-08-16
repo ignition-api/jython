@@ -47,10 +47,10 @@ def executeAndDistribute(
             occurs: If the file type is not recognized, path does not
             exist, project does not exist, or a key is not valid.
     """
-    if project is None:
-        raise IllegalArgumentException()
-    else:
+    if project is not None:
         print(path, project, parameters, action, actionSettings)
+    else:
+        raise IllegalArgumentException()
 
 
 def executeReport(path, project="project", parameters=None, fileType="pdf"):
@@ -78,7 +78,6 @@ def executeReport(path, project="project", parameters=None, fileType="pdf"):
     if path is None or project is None or fileType not in _fileTypes:
         raise IllegalArgumentException()
     print(path, project, parameters, fileType)
-    return None
 
 
 def getReportNamesAsDataset(project="project", includeReportName=True):

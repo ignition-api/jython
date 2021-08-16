@@ -20,8 +20,11 @@ __all__ = [
     "writeFile",
 ]
 
+import tempfile
+
 from java.io import File
-from java.nio.file import Files
+from java.nio.charset import Charset
+from java.nio.file import Files, Paths
 
 
 def fileExists(filepath):
@@ -33,8 +36,7 @@ def fileExists(filepath):
     Returns:
         bool: True (1) if the file/folder exists, False (0) otherwise.
     """
-    f = File(filepath)
-    return f.exists()
+    return File(filepath).exists()
 
 
 def getTempFile(extension):
@@ -50,9 +52,10 @@ def getTempFile(extension):
     Returns:
         str: The path to the newly created temp file.
     """
-    import tempfile
-
-    return tempfile.NamedTemporaryFile(suffix="." + extension).name
+    suffix = ".{}".format(extension)
+    with tempfile.NamedTemporaryFile(suffix=suffix) as temp:
+        name = temp.name
+    return name
 
 
 def openFile(extension=None, defaultLocation=None):
@@ -73,7 +76,6 @@ def openFile(extension=None, defaultLocation=None):
         str: The path to the selected file, or None if canceled.
     """
     print(extension, defaultLocation)
-    return None
 
 
 def openFiles(extension=None, defaultLocation=None):
@@ -94,7 +96,6 @@ def openFiles(extension=None, defaultLocation=None):
         list[str]: The paths to the selected files, or None if canceled.
     """
     print(extension, defaultLocation)
-    return None
 
 
 def readFileAsBytes(filepath):
@@ -135,9 +136,6 @@ def readFileAsString(filepath, encoding="UTF-8"):
     Returns:
         str: The contents of the file as a string.
     """
-    from java.nio.charset import Charset
-    from java.nio.file import Paths
-
     charset = Charset.forName(encoding)
     return Files.readString(Paths.get(filepath), charset)
 
@@ -162,7 +160,6 @@ def saveFile(filename, extension=None, typeDesc=None):
             None if they canceled.
     """
     print(filename, extension, typeDesc)
-    return None
 
 
 def writeFile(filepath, data, append=False, encoding="UTF-8"):

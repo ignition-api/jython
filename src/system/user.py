@@ -202,7 +202,7 @@ class PyUser(User):
         Args:
             args: Variable length argument list.
         """
-        print(args)
+        print(cls, args)
 
     def addRole(cls, role):
         """Convenience method for scripting to add a new role easily.
@@ -213,11 +213,15 @@ class PyUser(User):
             role (str): A new role to add. If empty or null, no
                 effect.
         """
-        print(role)
+        print(cls, role)
 
     def addRoles(cls, roles):
-        """Adds the provided roles to this user."""
-        print(roles)
+        """Adds the provided roles to this user.
+
+        Args:
+            roles (list[str]): A list of roles.
+        """
+        print(cls, roles)
 
     def addScheduleAdjustment(cls, start, end, available=True, note=None):
         """Convenience method for scripting to add a new schedule
@@ -232,7 +236,7 @@ class PyUser(User):
                 this period. Optional.
             note (str): May be null or empty. Optional.
         """
-        print(start, end, available, note)
+        print(cls, start, end, available, note)
 
     def addScheduleAdjustments(cls, scheduleAdjustments):
         """Add Schedule Adjustments.
@@ -241,7 +245,7 @@ class PyUser(User):
             scheduleAdjustments (ScheduleAdjustment): ScheduleAdjustment
                 object.
         """
-        print(scheduleAdjustments)
+        print(cls, scheduleAdjustments)
 
     def contains(cls, prop):
         """Returns if this users contains a given property."""
@@ -256,6 +260,7 @@ class PyUser(User):
         Returns:
             str: The value of the requested property.
         """
+        print(cls)
         return propertyName
 
     def getContactInfo(cls):
@@ -274,6 +279,7 @@ class PyUser(User):
 
     def getCount(cls):
         """Get count."""
+        print(cls)
         return 1
 
     def getId(cls):
@@ -292,8 +298,7 @@ class PyUser(User):
         Returns:
             object: The value of the requested property.
         """
-        print(prop)
-        return None
+        print(cls, prop)
 
     def getOrElse(cls, property, value):
         """Get the value for a given Property, or else fall back to
@@ -571,7 +576,6 @@ def getHoliday(holidayName):
             not found.
     """
     print(holidayName)
-    return None
 
 
 def getHolidayNames():
@@ -590,7 +594,7 @@ def getHolidays():
     Returns:
         list[HolidayModel]: A list of holidays, as HolidayModel objects.
     """
-    return None
+    return []
 
 
 def getNewUser(userSource, username):
@@ -625,7 +629,6 @@ def getRoles(userSource):
             user source.
     """
     print(userSource)
-    return None
 
 
 def getSchedule(scheduleName):
@@ -645,7 +648,6 @@ def getSchedule(scheduleName):
             IllegalArgumentException.
     """
     print(scheduleName)
-    return None
 
 
 def getScheduledUsers(userSource, date=None):
@@ -667,7 +669,6 @@ def getScheduledUsers(userSource, date=None):
     """
     date = system.date.now() if date is None else date
     print(userSource, date)
-    return None
 
 
 def getScheduleNames():

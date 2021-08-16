@@ -559,10 +559,11 @@ def isBetween(target_date, start_date, end_date):
         bool: True (1) if target_date is >= start_date and
             target_date <= end_date, False (0) otherwise.
     """
-    a = target_date
-    b = start_date
-    c = end_date
-    return a.compareTo(b) >= 0 >= a.compareTo(c)
+    return (
+        target_date.compareTo(start_date)
+        >= 0
+        >= target_date.compareTo(end_date)
+    )
 
 
 def isDaylightTime(date=Date()):
