@@ -36,7 +36,7 @@ Before you begin, ensure you have met the following requirements:
     ```bash
     $ brew install coatl-dev/coatl-dev/jython@2.7.1
     ```
-* You are familiar with [Ignition 8.1 Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
+* You are familiar with [Ignition 8.1 System Functions](https://docs.inductiveautomation.com/display/DOC81/System+Functions)
 
 ## Using Ignition
 
