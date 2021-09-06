@@ -18,8 +18,8 @@ __all__ = [
     "getAvailableLocales",
     "getAvailableTerms",
     "getClientId",
-    "getConnectionMode",
     "getConnectTimeout",
+    "getConnectionMode",
     "getEdition",
     "getGatewayAddress",
     "getGatewayStatus",
@@ -44,8 +44,8 @@ __all__ = [
     "sendMessage",
     "sendRequest",
     "sendRequestAsync",
-    "setConnectionMode",
     "setConnectTimeout",
+    "setConnectionMode",
     "setLocale",
     "setLoggingLevel",
     "setReadTimeout",
@@ -54,6 +54,7 @@ __all__ = [
 ]
 
 import getpass
+import json
 import os
 import platform
 import re
@@ -62,6 +63,7 @@ from java.awt import Toolkit
 from java.lang import Object, Thread
 from java.util import Date
 
+import system.__version__ as version
 import system.date
 import system.security
 from system.dataset import Dataset, PyDataSet
@@ -75,7 +77,15 @@ class LoggerEx(Object):
     builder.
     """
 
-    pass
+    def getLogger(self):
+        pass
+
+    def getName(self):
+        pass
+
+    @staticmethod
+    def log(*args):
+        pass
 
 
 class Request(Object):
@@ -394,17 +404,6 @@ def getClientId():
     return "92247003"
 
 
-def getConnectionMode():
-    """Retrieves this client session's current connection mode.
-
-    3 is read/write, 2 is read-only, and 1 is disconnected.
-
-    Returns:
-        int: The current connection mode for the client.
-    """
-    return 3
-
-
 def getConnectTimeout():
     """Returns the connect timeout in milliseconds for all
     client-to-gateway communication.
@@ -418,6 +417,17 @@ def getConnectTimeout():
             10,000 (ten seconds).
     """
     return 10000
+
+
+def getConnectionMode():
+    """Retrieves this client session's current connection mode.
+
+    3 is read/write, 2 is read-only, and 1 is disconnected.
+
+    Returns:
+        int: The current connection mode for the client.
+    """
+    return 3
 
 
 def getEdition():
@@ -631,8 +641,8 @@ def getVersion():
         Version: The currently running Ignition version number. as a
             Version object.
     """
-    major, minor, rev = [int(i) for i in system.__version__.split(".")]
-    build = int(system.__build__)
+    major, minor, rev = [int(i) for i in version.__version__.split(".")]
+    build = int(version.__build__)
     return Version(major=major, minor=minor, rev=rev, build=build)
 
 
@@ -707,8 +717,7 @@ def jsonDecode(jsonString):
     Returns:
         dict: The decoded Python object.
     """
-    print(jsonString)
-    return {"key": "value"}
+    return json.loads(jsonString)
 
 
 def jsonEncode(pyObj, indentFactor=4):
@@ -724,8 +733,7 @@ def jsonEncode(pyObj, indentFactor=4):
     Returns:
         str: The encoded JSON string.
     """
-    print(pyObj, indentFactor)
-    return ""
+    return json.dumps(pyObj, indent=indentFactor)
 
 
 def modifyTranslation(term, translation, locale="en"):

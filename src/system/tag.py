@@ -202,7 +202,7 @@ class QualityCode(Object):
         pass
 
     @staticmethod
-    def values(self):
+    def values():
         pass
 
     @staticmethod

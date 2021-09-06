@@ -678,9 +678,9 @@ def parse(
     Returns:
         Date: The parsed date.
     """
-    df = SimpleDateFormat(formatString, locale)
+    date_format = SimpleDateFormat(formatString, locale)
     cal = Calendar.getInstance(locale)
-    cal.setTime(df.parse(dateString))
+    cal.setTime(date_format.parse(dateString))
     return cal.getTime()
 
 
