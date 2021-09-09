@@ -30,17 +30,20 @@ Before you begin, ensure you have met the following requirements:
     ```bash
     $ brew install --cask zulu11
     ```
-* Jython 2.7.1
-  * From [maven.org](https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar)
-  * Or with Homebrew
-    ```bash
-    $ brew install coatl-dev/coatl-dev/jython@2.7.1
-    ```
+* Jython
+  * 2.7.1 for Ignition 8.0 through 8.1.7
+    * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.1.jar)
+    * Or via Homebrew
+      ```bash
+      $ brew install coatl-dev/coatl-dev/jython@2.7.1
+      ```
+  * 2.7.2 for [Ignition 8.1.8 onwards](https://docs.inductiveautomation.com/display/DOC81/New+in+this+Version#NewinthisVersion-Newin8.1.8)
+    * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.2.jar)
+    * Or via Homebrew
+      ```bash
+      $ brew install coatl-dev/coatl-dev/jython@2.7.2
+      ```
 * You are familiar with [Ignition 8.1 System Functions](https://docs.inductiveautomation.com/display/DOC81/System+Functions)
-
-## Using Ignition
-
-To use Ignition, download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
 
 ## Packages
 
@@ -51,6 +54,53 @@ Ignition consists of the following packages:
 ### system
 
 Is a package that includes all Ignition Scripting Functions.
+
+## Installation and usage
+
+To use Ignition, download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
+
+Also, once you've downloaded and unzipped the source code you may install it using the `setup.py`:
+
+```bash
+$ cd ~/Downloads/v8.1.X-jython
+$ jython setup.py install
+...
+Installed /usr/local/Cellar/jython@2.7.2/2.7.2/libexec/Lib/site-packages/ignition_api-8.1.9-py2.7.egg
+Processing dependencies for ignition-api==8.1.9
+Finished processing dependencies for ignition-api==8.1.9
+$ jython -m pip list
+...
+Package      Version
+------------ -------
+ignition-api 8.1.9  
+pip          19.1   
+setuptools   41.0.1
+```
+
+This will install it as package to your Jython installation, which will allow you to call Ignition Scripting functions from Jython's REPL.
+
+```bash
+$ jython
+Jython 2.7.2 (v2.7.2:925a3cc3b49d, Mar 21 2020, 10:03:58)
+[OpenJDK 64-Bit Server VM (Azul Systems, Inc.)] on java11.0.12
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from __future__ import print_function
+>>> import system.util
+>>> print(system.util.__doc__)
+Utility Functions.
+
+The following functions give you access to view various Gateway and
+Client data, as well as interact with other various systems.
+
+
+>>> system.util.beep()
+>>> quit()
+```
+
+And to uninstall:
+```bash
+$ jython -m pip uninstall ignition-api
+```
 
 ## Contributing to Ignition
 
