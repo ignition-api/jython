@@ -1,1 +1,2 @@
+exclude pyproject.toml
 include README.md LICENSE
