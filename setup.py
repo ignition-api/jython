@@ -19,7 +19,9 @@ with open("README.md", "r", "utf-8") as f:
 
 setup(
     name=about["__title__"],
-    version=about["__version__"],
+    version="{version}{cycle}".format(
+        version=about["__version__"], cycle=about["__cycle__"]
+    ),
     description=about["__description__"],
     long_description=readme,
     long_description_content_type="text/markdown",
@@ -37,6 +39,7 @@ setup(
         "Operating System :: Microsoft :: Windows",
         "Operating System :: POSIX :: Linux",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
         "Programming Language :: Python :: Implementation",
         "Programming Language :: Python :: Implementation :: Jython",
         "Topic :: Software Development :: Libraries :: Python Modules",
