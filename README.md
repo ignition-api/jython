@@ -59,22 +59,17 @@ Is a package that includes all Ignition Scripting Functions.
 
 To use Ignition, download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
 
-Also, once you've downloaded and unzipped the source code you may install it using the `setup.py`:
+Also, you may use `jython -m pip install` like this:
 
 ```bash
-$ cd ~/Downloads/v8.1.X-jython
-$ jython setup.py install
+$ jython -m pip install https://github.com/thecesrom/Ignition/archive/refs/tags/v8.1.10-jython.zip
 ...
-Installed /usr/local/Cellar/jython@2.7.2/2.7.2/libexec/Lib/site-packages/ignition_api-8.1.9-py2.7.egg
-Processing dependencies for ignition-api==8.1.9
-Finished processing dependencies for ignition-api==8.1.9
-$ jython -m pip list
-...
-Package      Version
------------- -------
-ignition-api 8.1.9  
-pip          19.1   
-setuptools   41.0.1
+Collecting https://github.com/thecesrom/Ignition/archive/refs/tags/v8.1.10-jython.zip
+  Downloading https://github.com/thecesrom/Ignition/archive/refs/tags/v8.1.10-jython.zip
+
+Installing collected packages: ignition-api-jython
+  Running setup.py install for ignition-api-jython ... done
+Successfully installed ignition-api-jython-8.1.10
 ```
 
 This will install it as package to your Jython installation, which will allow you to call Ignition Scripting functions from Jython's REPL.
@@ -99,7 +94,7 @@ Client data, as well as interact with other various systems.
 
 And to uninstall:
 ```bash
-$ jython -m pip uninstall ignition-api
+$ jython -m pip uninstall ignition-api -y
 ```
 
 ## Contributing to Ignition
