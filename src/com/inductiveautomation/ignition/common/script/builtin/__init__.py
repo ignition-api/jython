@@ -2,9 +2,7 @@ __all__ = [
     "DatasetUtilities",
     "SProcCall",
     "SystemUtilities",
-    "WindowUtilities",
 ]
-
 
 from java.lang import Object
 from java.util import Locale
@@ -306,29 +304,3 @@ class SystemUtilities(Object):
 
         def onSuccess(self, func):
             pass
-
-
-class WindowUtilities(Object):
-    """These are the scripting functions mounted at system.gui.*.
-    Changes to this class must be made carefully, as some of the true
-    implementations actually reside in the subclass,
-    WindowUtilitiesForDesktop.
-    """
-
-    def confirm(self, *args):
-        pass
-
-    def errorBox(self, *args):
-        pass
-
-    def inputBox(self, *args):
-        pass
-
-    def messageBox(self, *args):
-        pass
-
-    def passwordBox(self, *args):
-        pass
-
-    def warningBox(self, *args):
-        pass

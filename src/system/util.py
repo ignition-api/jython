@@ -65,7 +65,6 @@ from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.model import Version
 from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
-    SystemUtilities,
 )
 from com.inductiveautomation.ignition.common.script.message import Request
 from com.inductiveautomation.ignition.common.util import LoggerEx
@@ -831,7 +830,7 @@ def sendRequestAsync(
         onSuccess,
         onError,
     )
-    return SystemUtilities.RequestImpl()
+    return Request()
 
 
 def setConnectionMode(mode):

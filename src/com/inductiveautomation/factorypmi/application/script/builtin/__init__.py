@@ -1,4 +1,4 @@
-__all__ = ["INavUtilities", "PrintUtilities"]
+__all__ = ["INavUtilities", "PrintUtilities", "WindowUtilities"]
 
 from abc import ABCMeta, abstractmethod
 
@@ -43,7 +43,7 @@ class INavUtilities(ABCMeta):
         pass
 
     @abstractmethod
-    def openWindow(cls, path, params=None):
+    def openWindow(cls, *args):
         pass
 
     @abstractmethod
@@ -51,11 +51,11 @@ class INavUtilities(ABCMeta):
         pass
 
     @abstractmethod
-    def openWindowInstance(cls, path, params=None):
+    def openWindowInstance(cls, *args):
         pass
 
     @abstractmethod
-    def swapTo(cls, path, params=None):
+    def swapTo(cls, *args):
         pass
 
     @abstractmethod
@@ -64,9 +64,6 @@ class INavUtilities(ABCMeta):
 
 
 class PrintUtilities(Object):
-    def __init__(self, app):
-        self.app = app
-
     def createImage(self, c):
         print(self, c)
         width = height = imageType = 1
@@ -144,3 +141,29 @@ class PrintUtilities(Object):
 
         def setZoomFactor(self, zoomFactor):
             pass
+
+
+class WindowUtilities(Object):
+    """These are the scripting functions mounted at system.gui.*.
+    Changes to this class must be made carefully, as some of the true
+    implementations actually reside in the subclass,
+    WindowUtilitiesForDesktop.
+    """
+
+    def confirm(self, *args):
+        pass
+
+    def errorBox(self, *args):
+        pass
+
+    def inputBox(self, *args):
+        pass
+
+    def messageBox(self, *args):
+        pass
+
+    def passwordBox(self, *args):
+        pass
+
+    def warningBox(self, *args):
+        pass

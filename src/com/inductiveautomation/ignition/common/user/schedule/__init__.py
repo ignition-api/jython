@@ -44,7 +44,7 @@ class ScheduleAdjustment(Object):
     def setEnd(self, end):
         pass
 
-    def setNote(self, note):
+    def setNoe(self, note):
         pass
 
     def setStart(self, start):
