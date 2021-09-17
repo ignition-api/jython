@@ -1,8 +1,4 @@
-__all__ = [
-    "DatasetUtilities",
-    "SProcCall",
-    "SystemUtilities",
-]
+__all__ = ["DatasetUtilities", "SProcCall", "SystemUtilities"]
 
 from java.lang import Object
 from java.util import Locale
