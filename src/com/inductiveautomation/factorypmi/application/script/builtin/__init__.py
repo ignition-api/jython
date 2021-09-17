@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 __all__ = ["INavUtilities", "PrintUtilities", "WindowUtilities"]
 
 from abc import ABCMeta, abstractmethod
