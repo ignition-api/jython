@@ -49,7 +49,12 @@ Before you begin, ensure you have met the following requirements:
 
 Ignition consists of the following packages:
 
+* com
 * system
+
+### com
+
+These are libraries for some of Inductive Automation's Java packages and functions that are imported in `system` packages.
 
 ### system
 
@@ -57,19 +62,10 @@ Is a package that includes all Ignition Scripting Functions.
 
 ## Installation and usage
 
-To use Ignition, download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
-
-Also, you may use `jython -m pip install` like this:
+The preferred method is to install it by running `pip` by running `jython -m pip install` like this:
 
 ```bash
-$ jython -m pip install https://github.com/thecesrom/Ignition/archive/refs/tags/v8.1.10-jython.zip
-...
-Collecting https://github.com/thecesrom/Ignition/archive/refs/tags/v8.1.10-jython.zip
-  Downloading https://github.com/thecesrom/Ignition/archive/refs/tags/v8.1.10-jython.zip
-
-Installing collected packages: ignition-api-jython
-  Running setup.py install for ignition-api-jython ... done
-Successfully installed ignition-api-jython-8.1.10
+$ jython -m pip install https://github.com/thecesrom/Ignition/archive/refs/tags/v8.1.10-jython.post1.zip
 ```
 
 This will install it as package to your Jython installation, which will allow you to call Ignition Scripting functions from Jython's REPL.
@@ -93,9 +89,14 @@ Client data, as well as interact with other various systems.
 ```
 
 And to uninstall:
+
 ```bash
-$ jython -m pip uninstall ignition-api -y
+$ jython -m pip uninstall ignition-api-jython
 ```
+
+### Downloading from releases
+
+You may also download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
 
 ## Contributing to Ignition
 

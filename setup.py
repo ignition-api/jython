@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 # -*- coding: utf-8 -*-
 
-"""Ignition API."""
+"""Ignition API (Jython)."""
 
 import os
 from codecs import open
@@ -19,15 +19,13 @@ with open("README.md", "r", "utf-8") as f:
 
 setup(
     name=about["__title__"],
-    version=about["__version__"],
+    version="{}{}".format(about["__version__"], about["__cycle__"]),
     description=about["__description__"],
     long_description=readme,
     long_description_content_type="text/markdown",
+    url=about["__url__"],
     author=about["__author__"],
     author_email=about["__author_email__"],
-    url=about["__url__"],
-    packages=find_packages(where="src"),
-    package_dir={"": "src"},
     license=about["__license__"],
     classifiers=[
         "Intended Audience :: Information Technology",
@@ -43,4 +41,7 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Software Development :: Testing :: Mocking",
     ],
+    keywords="hmi, ignition, inductive automation, scada",
+    package_dir={"": "src"},
+    packages=find_packages(where="src"),
 )
