@@ -4,6 +4,9 @@ from java.lang import Object
 from java.util import Locale
 
 from com.inductiveautomation.ignition.common import Dataset
+from com.inductiveautomation.ignition.common.script.abc import (
+    AbstractJythonSequence,
+)
 from com.inductiveautomation.ignition.common.script.message import (
     Request,
     RequestWatcher,
@@ -127,7 +130,7 @@ class DatasetUtilities(Object):
     def updateRow(ds, row, changes):
         pass
 
-    class PyDataSet(Dataset):
+    class PyDataSet(Dataset, AbstractJythonSequence):
         def getColumnCount(self):
             pass
 

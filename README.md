@@ -65,7 +65,7 @@ Is a package that includes all Ignition Scripting Functions.
 The preferred method is to install it by running `pip` by running `jython -m pip install` like this:
 
 ```bash
-$ jython -m pip install https://github.com/thecesrom/Ignition/archive/refs/tags/v8.1.10-jython.post1.zip
+$ jython -m pip install https://github.com/thecesrom/Ignition/archive/refs/tags/v8.1.10-jython.post2.zip
 ```
 
 This will install it as package to your Jython installation, which will allow you to call Ignition Scripting functions from Jython's REPL.
