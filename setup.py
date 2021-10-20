@@ -28,6 +28,8 @@ setup(
     author_email=about["__author_email__"],
     license=about["__license__"],
     classifiers=[
+        "Development Status :: 7 - Inactive",
+        "Intended Audience :: Developers",
         "Intended Audience :: Information Technology",
         "Intended Audience :: Manufacturing",
         "License :: OSI Approved :: MIT License",
